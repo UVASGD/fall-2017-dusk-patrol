@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicBullet : MonoBehaviour
 {
     public float damage;
-    private float speed = 2;
+    private float speed = 10;
     private Rigidbody2D rigidBody;
 
 	void Awake ()
