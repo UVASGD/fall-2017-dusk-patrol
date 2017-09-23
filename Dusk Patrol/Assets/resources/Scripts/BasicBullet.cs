@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BasicBullet : MonoBehaviour
 {
-    public float damage;
+    public float damage = 10;
     private float speed = 10;
     private Rigidbody2D rigidBody;
+    private float isEnemyBullet = -1; //default as enemy bullet
 
 	void Awake ()
     {
@@ -18,13 +19,24 @@ public class BasicBullet : MonoBehaviour
         MoveBullet();
     }
 
+    public void setAsPlayerBullet()
+    {
+        isEnemyBullet = 1;
+    }
+
     void OnTriggerEnter2D(Collider2D col)
+    {
+        Destroy(gameObject);
+        col.gameObject.GetComponent<HealthScript>().TakeDamage(damage);
+    }
+
+    void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
 
     void MoveBullet()
     {
-        transform.position += new Vector3(0, speed * Time.deltaTime, 0);
+        transform.position += isEnemyBullet * new Vector3(0, speed * Time.deltaTime, 0);
     }
 }

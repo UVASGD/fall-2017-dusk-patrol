@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 7f;
     private float maxCoolDown = 0.2f; // 1/5th of a second
     private float currCoolDown = 0f;
+    private float horizScale = 1.1f; //scale used to get the location of the guns
+    private float vertScale = 1.5f; //scale used to set how far in front of the plane to make the bullets
 
     void Awake()
     {
@@ -39,8 +41,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetButton("Jump"))
             {
-                Instantiate(bullet, leftGun, transform.rotation);
-                Instantiate(bullet, rightGun, transform.rotation);
+                GameObject bullet1 = Instantiate(bullet, leftGun, transform.rotation);
+                GameObject bullet2 = Instantiate(bullet, rightGun, transform.rotation);
+
+                bullet1.GetComponent<BasicBullet>().setAsPlayerBullet();
+                bullet2.GetComponent<BasicBullet>().setAsPlayerBullet();
             }
             currCoolDown = 0f;
         }
@@ -49,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     void SetGunLocations()
     {
-        leftGun = transform.position + 1.1f * Vector3.left + 1.5f * Vector3.up;
-        rightGun = transform.position - 1.1f * Vector3.left + 1.5f * Vector3.up;
+        leftGun = transform.position + horizScale * Vector3.left + vertScale * Vector3.up;
+        rightGun = transform.position - horizScale * Vector3.left + vertScale * Vector3.up;
     }
 }
