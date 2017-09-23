@@ -17,3 +17,5 @@ After the introductory scene, the Time Travel UI will pop up on the screen. Ther
 The first time travel will be a maximum time length time travel. 
 
 Not looking to pause the gameplay at all.
+
+Potential for enemy boats in the ocean??
