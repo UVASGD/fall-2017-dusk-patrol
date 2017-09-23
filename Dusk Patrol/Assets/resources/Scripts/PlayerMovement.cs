@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
         float translationX = Input.GetAxis("Horizontal");
         float translationY = Input.GetAxis("Vertical");
 
-        float speed = 5f;
+        float speed = 7f;
 
         //Vector2 move = new Vector2(translationX, translationY);
         //gameObject.transform.Translate((Vector3)move * Time.deltaTime * speed);
