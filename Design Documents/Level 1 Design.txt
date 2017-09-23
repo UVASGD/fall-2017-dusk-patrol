@@ -1,0 +1,19 @@
+Start the level with a blue ocean, and a few enemies of a ww2 plane type.
+
+These 6-8 enemies will be really easy to kill and have a low fire rate.
+
+After killing them there will be a slight pause and then a shadow of the boss ship will go across the screen turning the water red.
+
+Alien type enemies will start to spawn in after this.
+
+Cylinder Earth. Enemies wrap around left to right and right to left.
+
+Enemies that go off the bottom of the screen dont come back.
+
+Introducing the Time Travel Mechanic.
+
+After the introductory scene, the Time Travel UI will pop up on the screen. There will be a flashing text box, that says 'Jump Back - Press X'
+
+The first time travel will be a maximum time length time travel. 
+
+Not looking to pause the gameplay at all.
