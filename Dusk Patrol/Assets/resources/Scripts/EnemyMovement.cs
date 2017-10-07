@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour {
 
     private float speed = 10;
+    private float colDamage = 10;
     private Rigidbody2D myRigidBody;
     private Vector2 movement;
     private float t;
@@ -15,9 +16,15 @@ public class EnemyMovement : MonoBehaviour {
         movement = new Vector2(0, 0);
         t = 0;
     }
-    	
-	// Update is called once per frame
-	void Update () {
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.gameObject.GetComponent<HealthScript>().TakeDamage(colDamage);
+        this.GetComponent<HealthScript>().TakeDamage(colDamage);
+    }
+
+    // Update is called once per frame
+    void Update () {
         t += Time.deltaTime;
         movement = this.getMovement(t);
         gameObject.GetComponent<Rigidbody2D>().velocity = movement*speed*Time.deltaTime;
