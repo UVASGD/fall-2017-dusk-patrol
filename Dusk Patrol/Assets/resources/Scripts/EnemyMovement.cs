@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-    private float speed = 10;
-    private float colDamage = 10;
+    public float speed = 10;
+	public  float colDamage = 10;
     private Rigidbody2D myRigidBody;
     private Vector2 movement;
     private float t;
+
+	public TimeManager tm;
+
     // Use this for initialization
     private void Awake()
     {
@@ -16,6 +19,12 @@ public class EnemyMovement : MonoBehaviour {
         movement = new Vector2(0, 0);
         t = 0;
     }
+
+	private void Start() {
+		if (tm == null) {
+			tm = FindObjectOfType<TimeManager> ();
+		}
+	}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,9 +34,9 @@ public class EnemyMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        t += Time.deltaTime;
+		t += Time.deltaTime * tm.timeFactor;
         movement = this.getMovement(t);
-        gameObject.GetComponent<Rigidbody2D>().velocity = movement*speed*Time.deltaTime;
+		gameObject.GetComponent<Rigidbody2D>().velocity = movement * speed * Time.deltaTime * tm.timeFactor;
      }
 
     Vector2 getMovement(float t)
