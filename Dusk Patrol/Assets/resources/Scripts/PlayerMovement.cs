@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (currCoolDown > maxCoolDown)
         {
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Fire1"))
             {
                 GameObject bullet1 = Instantiate(bullet, leftGun, transform.rotation);
                 GameObject bullet2 = Instantiate(bullet, rightGun, transform.rotation);
