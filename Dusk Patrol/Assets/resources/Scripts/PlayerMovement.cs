@@ -32,6 +32,14 @@ public class PlayerMovement : MonoBehaviour
         float translationX = Input.GetAxis("Horizontal");
         float translationY = Input.GetAxis("Vertical");
 
+        if (Mathf.Abs(transform.position.x) > CameraScript.viewEdgeX)
+        {
+            if (Mathf.Sign(translationX) == Mathf.Sign(transform.position.x)) //so that the planes don't keep jumping back and forth
+            {
+                transform.position = new Vector3(-1 * transform.position.x, transform.position.y, 0);
+            }
+        }
+
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(translationX, translationY) * speed;
     }
 

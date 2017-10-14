@@ -14,7 +14,7 @@ public class EnemyShooting : MonoBehaviour
         float random = Random.Range(0f, 100f);
         if (random < 30f)
         {
-            Shoot(enemyBullet);
+            //Shoot(enemyBullet);
         }
     }
 
