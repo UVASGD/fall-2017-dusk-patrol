@@ -20,4 +20,8 @@ public class HealthScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+	public float getHealth(){
+		return currHealth;
+	}
 }
