@@ -5,6 +5,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour {
 
 	public float timeFactor;
+    public float timeResource;
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +14,17 @@ public class TimeManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetButton ("Fire2")) {
+        timeResource = timeResource + 0.1f;
+        if (Input.GetButton ("Fire2")) {
 			timeFactor = -1;
+            if (timeResource > 0.5f)
+            {
+                timeResource = timeResource - 0.5f;
+            }
+            else
+            {
+                timeResource = 0;
+            }
 		} else {
 			timeFactor = 1;
 		}
