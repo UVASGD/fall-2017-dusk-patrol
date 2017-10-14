@@ -41,6 +41,13 @@ public class EnemyMovement : MonoBehaviour {
 
     Vector2 getMovement(float t)
     {
-        return new Vector2(1, -2 * t);
+        float x = t;
+        float y = Mathf.Log(t) + 4;
+        // float y = -Mathf.Log(t) + 4;
+        // x = [0, 2(Pi)]
+        // float z = ?;
+        // float c = some constant;
+        // float y = z*c(Mathf.cos(c*t);
+        return new Vector2(x, y);
     }
 }
