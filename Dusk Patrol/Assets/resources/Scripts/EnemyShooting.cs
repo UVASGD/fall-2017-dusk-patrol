@@ -14,7 +14,7 @@ public class EnemyShooting : MonoBehaviour
         float random = Random.Range(0f, 100f);
         if (random < 30f)
         {
-            //Shoot(enemyBullet);
+            Shoot(enemyBullet);
         }
     }
 
@@ -22,7 +22,7 @@ public class EnemyShooting : MonoBehaviour
     {
         if (currCoolDown > maxCoolDown)
         {
-            Instantiate(enemyBullet, transform.position - 2f * Vector3.up, transform.rotation);
+            Instantiate(enemyBullet, transform.position - 2f * Vector3.up, Quaternion.identity);
             currCoolDown = 0f;
         }
         currCoolDown += Time.deltaTime;
