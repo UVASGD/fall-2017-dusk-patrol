@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-    public float speed = 10;
-	public  float colDamage = 10;
+    public float speed;
+	public  float colDamage;
     private Rigidbody2D myRigidBody;
     private Vector2 movement;
     private float t;
@@ -36,10 +36,10 @@ public class EnemyMovement : MonoBehaviour {
     void Update () {
 		t += Time.deltaTime * tm.timeFactor;
         movement = this.getMovement(t);
-		gameObject.GetComponent<Rigidbody2D>().velocity = movement * speed * Time.deltaTime * tm.timeFactor;
+		myRigidBody.velocity = movement * speed * Time.deltaTime * tm.timeFactor;
      }
 
-    Vector2 getMovement(float t)
+    public virtual Vector2 getMovement(float t)
     {
         float x = t;
         float y = Mathf.Log(t) + 4;
