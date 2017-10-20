@@ -19,4 +19,8 @@ public class TimeManager : MonoBehaviour {
 			timeFactor = 1;
 		}
 	}
+
+	public float getTime(){
+		return timeLimit;
+	}
 }
