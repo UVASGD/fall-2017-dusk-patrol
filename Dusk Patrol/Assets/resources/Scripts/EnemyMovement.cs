@@ -36,8 +36,9 @@ public class EnemyMovement : MonoBehaviour {
     void Update () {
 		t += Time.deltaTime * tm.timeFactor;
         movement = this.getMovement(t);
-		gameObject.GetComponent<Rigidbody2D>().velocity = movement * speed * Time.deltaTime * tm.timeFactor;
-     }
+        gameObject.GetComponent<Rigidbody2D>().velocity = movement * speed * Time.deltaTime * tm.timeFactor;
+        CameraScript.WrapAround(gameObject);
+    }
 
     Vector2 getMovement(float t)
     {
