@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
 
+	public float timeLimit = 3;
 	public float timeFactor;
 
 	// Use this for initialization
@@ -18,5 +19,9 @@ public class TimeManager : MonoBehaviour {
 		} else {
 			timeFactor = 1;
 		}
+	}
+
+	public float getTime(){
+		return timeLimit;
 	}
 }
