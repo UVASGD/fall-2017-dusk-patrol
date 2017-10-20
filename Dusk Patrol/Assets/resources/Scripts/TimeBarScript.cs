@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+public class TimeBarScript : MonoBehaviour {
 	public TimeManager timeBar;
 	public Image content;
 
