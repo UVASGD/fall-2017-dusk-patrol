@@ -11,8 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 7f;
     private float maxCoolDown = 0.2f; // 1/5th of a second
     private float currCoolDown = 0f;
-    private float horizScale = 1.1f; //scale used to get the location of the guns
-    private float vertScale = 1.5f; //scale used to set how far in front of the plane to make the bullets
+    private float horizScale = 0.3667f; //scale used to get the location of the guns
+    private float vertScale = 0.5f; //scale used to set how far in front of the plane to make the bullets
 
     void Awake()
     {
