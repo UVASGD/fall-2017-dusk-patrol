@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd7ff79829074beca8eba5dbded6090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeLimit: 3
   timeFactor: 1
 --- !u!1001 &1973344344
 Prefab:
@@ -258,10 +259,10 @@ Prefab:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 114387238822613114, guid: c53dba04394514f9d90c1dc8e50e452e,
+    - target: {fileID: 114916716780793050, guid: c53dba04394514f9d90c1dc8e50e452e,
         type: 2}
-      propertyPath: m_Enabled
-      value: 1
+      propertyPath: direction
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c53dba04394514f9d90c1dc8e50e452e, type: 2}
