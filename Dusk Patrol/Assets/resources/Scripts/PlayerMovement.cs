@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     void BackTrack()
     {
-        if (tm.timeFactor < 0 && tm.timeResource > 0)
+        if (tm.timeFactor < 0 && tm.timeResource > 0 && pastPositions.Count != 0)
         {
             gameObject.transform.position = pastPositions.Pop();
         }
