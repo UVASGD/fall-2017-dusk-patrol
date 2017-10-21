@@ -33,6 +33,7 @@ public class HealthScript : MonoBehaviour
             isDead = false;
             GetComponent<SpriteRenderer>().enabled = true;
             GetComponent<Collider2D>().enabled = true;
+			GetComponent<PlayerMovement> ().enabled = true;
             timeDead = 0f;
         }
     }
@@ -47,6 +48,7 @@ public class HealthScript : MonoBehaviour
             isDead = true;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
+			GetComponent<PlayerMovement> ().enabled = false;
             timeDead = timer;
         }
     }
