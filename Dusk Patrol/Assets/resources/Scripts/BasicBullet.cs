@@ -22,6 +22,7 @@ public class BasicBullet : MonoBehaviour
         timer += Time.deltaTime * TimeManager.timeFactor;
         if (timer <= 0f)
             Destroy(gameObject);
+
         if (timer <= despawnedTime)
         {
             GetComponent<SpriteRenderer>().enabled = true;
@@ -36,12 +37,11 @@ public class BasicBullet : MonoBehaviour
             Destroy(gameObject);
 
         Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
-        if (Mathf.Abs(viewPos.y) > 1)
+        if (viewPos.y > 1 || viewPos.y < 0)
         {
-            Debug.Log("Move Out of Screen");
             isDespawn = true;
-            //GetComponent<SpriteRenderer>().enabled = false;
-            //GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 
@@ -62,8 +62,8 @@ public class BasicBullet : MonoBehaviour
         }
         despawnedTime = timer;
         isDespawn = true;
-        //GetComponent<SpriteRenderer>().enabled = false;
-        //GetComponent<Collider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     void MoveBullet()
