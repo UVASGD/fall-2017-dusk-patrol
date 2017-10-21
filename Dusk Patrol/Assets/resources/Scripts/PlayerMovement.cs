@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
         float translationY = Input.GetAxis("Vertical");
 
         gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(translationX, translationY) * speed;
+        CameraScript.WrapAround(gameObject);
     }
 
     void Shoot(GameObject bullet)
