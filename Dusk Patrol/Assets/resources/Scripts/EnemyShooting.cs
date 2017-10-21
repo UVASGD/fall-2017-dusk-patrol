@@ -35,7 +35,6 @@ public class EnemyShooting : MonoBehaviour
     {
         if(!health.isDead)
         {
-            Debug.Log("Not Dead");
             if (TimeManager.timeFactor > 0)
             {
 				Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);

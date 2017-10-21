@@ -22,16 +22,27 @@ public class BasicBullet : MonoBehaviour
         timer += Time.deltaTime * TimeManager.timeFactor;
         if (timer <= 0f)
             Destroy(gameObject);
+
         if (timer <= despawnedTime)
         {
             GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<Collider2D>().enabled = true;
             Debug.Log("Respawn Bullet");
         }
+
         if(!isDespawn)
             MoveBullet();
-        else
-            if (timer - despawnedTime >= TimeManager.timeLimit)
-                Destroy(gameObject);
+
+        if (timer - despawnedTime >= TimeManager.timeLimit)
+            Destroy(gameObject);
+
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
+        if (viewPos.y > 1 || viewPos.y < 0)
+        {
+            isDespawn = true;
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     public void setAsPlayerBullet()
@@ -52,13 +63,7 @@ public class BasicBullet : MonoBehaviour
         despawnedTime = timer;
         isDespawn = true;
         GetComponent<SpriteRenderer>().enabled = false;
-    }
-
-    void OnBecameInvisible()
-    {
-        Debug.Log("Move Out of Screen");
-        isDespawn = true;
-        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
     }
 
     void MoveBullet()
