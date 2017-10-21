@@ -16,7 +16,6 @@ public class EnemyShooting : MonoBehaviour
 
     void Awake()
     {
-<<<<<<< HEAD
         Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
         if (viewPos.x > 1 || viewPos.x<0)
             return;
@@ -26,12 +25,10 @@ public class EnemyShooting : MonoBehaviour
 
         float random = Random.Range(0f, 100f);
         if (random < 30f)
-=======
         health = GetComponent<HealthScript>();
 
         shootTimes = new float[10];
         for (int i = 0; i < shootTimes.Length; i++)
->>>>>>> master
         {
             shootTimes[i] = Random.Range(30f, 100f) / 100f;
         }
