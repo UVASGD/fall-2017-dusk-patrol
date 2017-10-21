@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour {
 			timeFactor = -1;
             if (timeResource > 0.5f)
             {
-                timeResource = timeResource - 0.5f;
+                timeResource = timeResource - 0.3f;
             }
             else
             {

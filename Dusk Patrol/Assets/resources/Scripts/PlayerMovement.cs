@@ -71,16 +71,19 @@ public class PlayerMovement : MonoBehaviour
 
     void BackTrack()
     {
-        if (tm.timeFactor < 0)
+        if (tm.timeFactor < 0 && tm.timeResource > 0)
         {
-            gameObject.GetComponent<Rigidbody2D>().position = pastPositions.Pop();
+            gameObject.transform.position = pastPositions.Pop();
         }
     }
-    
-        void StoreLocation()
+
+    void StoreLocation()
+    {
+        if (tm.timeFactor > 0)
         {
-        pastPositions.Push(transform.position);
+            pastPositions.Push(transform.position);
         }
+    }
         
     void SetGunLocations()
     {
