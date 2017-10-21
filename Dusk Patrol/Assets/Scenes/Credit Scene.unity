@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5955882, g: 0.94979715, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -163,8 +163,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8f41827166e422d418df09358bf8d36c, type: 3}
-    m_FontSize: 32
+    m_Font: {fileID: 12800000, guid: b0e16c2bf50711e48b058b070987bd37, type: 3}
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8235294, g: 0.98539555, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -311,8 +311,19 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: -made by a bunch of people that I don't know the exact names of, so no one
-    gets credit right now
+  m_Text: 'Kenny Chen
+
+    Erik Haukenes
+
+    Jack Herd
+
+    Taylor Nelson
+
+    Alex Nguyen
+
+    Joshua Santos
+
+    William Wong'
 --- !u!222 &1006144329
 CanvasRenderer:
   m_ObjectHideFlags: 0
