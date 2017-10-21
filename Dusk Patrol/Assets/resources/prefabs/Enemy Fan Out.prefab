@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114387238822613114}
   - component: {fileID: 114916716780793050}
   m_Layer: 0
-  m_Name: Fan-Out Enemy
+  m_Name: Enemy Fan Out
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

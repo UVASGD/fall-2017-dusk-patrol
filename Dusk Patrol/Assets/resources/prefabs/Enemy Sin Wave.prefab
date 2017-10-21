@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114367721231530054}
   - component: {fileID: 114236360806524252}
   m_Layer: 0
-  m_Name: Enemy Zig Zag 1
+  m_Name: Enemy Sin Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

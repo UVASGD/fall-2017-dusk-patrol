@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114134249640171460}
   - component: {fileID: 114240753769347582}
   m_Layer: 0
-  m_Name: Enemy Sin Wave 1
+  m_Name: Enemy Left To Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
