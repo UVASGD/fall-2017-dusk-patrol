@@ -33,14 +33,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Update ()
+    void Update()
     {
         MovePlayer();
         Shoot(bullet);
         StoreLocation();
-        BackTrack();
 
         SetGunLocations();
+        BackTrack();
+
     }
 
     void MovePlayer()
@@ -72,16 +73,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (tm.timeFactor < 0)
         {
-            Debug.Log(pastPositions.Pop());
             gameObject.GetComponent<Rigidbody2D>().position = pastPositions.Pop();
         }
     }
-
-    void StoreLocation()
-    {
+    
+        void StoreLocation()
+        {
         pastPositions.Push(transform.position);
-    }
-
+        }
+        
     void SetGunLocations()
     {
         leftGun = transform.position + horizScale * Vector3.left + vertScale * Vector3.up;
