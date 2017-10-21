@@ -5,23 +5,75 @@ using UnityEngine;
 public class HealthScript : MonoBehaviour
 {
     public float maxHealth;
+    public bool isDead = false;
+
     private float currHealth;
+    private float timer = 0;
+    private float timeDead = 0f;
+    private Stack<HealthTime> healthStack;
 
     void Awake()
     {
+        healthStack = new Stack<HealthTime>();
         currHealth = maxHealth;
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime * TimeManager.timeFactor;
+
+        if (timer <= healthStack.Peek().getTime())
+        {
+            HealthTime ht = healthStack.Pop();
+            currHealth = ht.getHealth();
+        }
+
+        if (timer <= timeDead)
+        {
+            isDead = false;
+            GetComponent<SpriteRenderer>().enabled = true;
+            GetComponent<Collider2D>().enabled = true;
+            timeDead = 0f;
+        }
     }
 
     public void TakeDamage(float damage)
     {
         currHealth -= damage;
+        healthStack.Push(new HealthTime(currHealth, timer));
+
         if (currHealth <= 0)
         {
-            Destroy(gameObject);
+            isDead = true;
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+            timeDead = timer;
         }
     }
 
 	public float getHealth(){
 		return currHealth;
 	}
+}
+
+public class HealthTime
+{
+    private float health;
+    private float time;
+
+    public HealthTime(float h, float t)
+    {
+        health = h;
+        time = t;
+    }
+
+    public float getHealth()
+    {
+        return health;
+    }
+
+    public float getTime()
+    {
+        return time;
+    }
 }
