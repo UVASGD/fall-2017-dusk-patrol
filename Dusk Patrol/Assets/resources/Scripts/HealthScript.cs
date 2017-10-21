@@ -22,7 +22,7 @@ public class HealthScript : MonoBehaviour
     {
         timer += Time.deltaTime * TimeManager.timeFactor;
 
-        if (timer <= healthStack.Peek().getTime())
+        if (healthStack.Count != 0 && timer <= healthStack.Peek().getTime())
         {
             HealthTime ht = healthStack.Pop();
             currHealth = ht.getHealth();
