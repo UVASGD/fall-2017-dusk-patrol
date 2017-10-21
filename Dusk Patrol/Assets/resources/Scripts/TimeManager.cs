@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour {
 
 	public float timeLimit = 3;
 	public float timeFactor;
-    public float timeResource;
+  public float timeResource;
 
 	// Use this for initialization
 	void Start () {
