@@ -22,7 +22,7 @@ public class EnemyShooting : MonoBehaviour
     {
         if (currCoolDown > maxCoolDown)
         {
-			Instantiate(enemyBullet, transform.position - 0.5f * Vector3.up, Quaternion.identity);
+			Instantiate(enemyBullet, transform.position - Vector3.up, Quaternion.identity);
             currCoolDown = 0f;
         }
         currCoolDown += Time.deltaTime;

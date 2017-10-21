@@ -38,6 +38,7 @@ public class TimeManager : MonoBehaviour {
         }
         else
         {
+            timeFactor = 1;
             //Debug.Log("CoolDown");
             coolDownTimer += Time.deltaTime;
             if (coolDownTimer >= maxCoolDown)
