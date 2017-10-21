@@ -34,9 +34,9 @@ public class EnemyMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-		t += Time.deltaTime * tm.timeFactor;
+		t += Time.deltaTime * TimeManager.timeFactor;
 		movement = this.getMovement(t).normalized;
-		myRigidBody.velocity = movement * speed * Time.deltaTime * tm.timeFactor;
+		myRigidBody.velocity = movement * speed * Time.deltaTime * TimeManager.timeFactor;
 
 		CameraScript.WrapAround(gameObject);
      }
