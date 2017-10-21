@@ -11,6 +11,13 @@ public class EnemyShooting : MonoBehaviour
 
     void Update()
     {
+        Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+        if (viewPos.x > 1 || viewPos.x<0)
+            return;
+        if (viewPos.y > 1|| viewPos.y<0)
+            return;
+
+
         float random = Random.Range(0f, 100f);
         if (random < 30f)
         {
