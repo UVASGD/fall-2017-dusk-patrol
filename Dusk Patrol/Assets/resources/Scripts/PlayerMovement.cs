@@ -37,9 +37,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        MovePlayer();
-        Shoot(bullet);
-        StoreLocation();
+        if (TimeManager.timeFactor > 0)
+        {
+            MovePlayer();
+            Shoot(bullet);
+            StoreLocation();
+        }
+        else
+        {
+            rigidBody.velocity = Vector2.zero;
+        }        
 
         SetGunLocations();
         BackTrack();
@@ -74,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     void BackTrack()
     {
-        if (tm.timeFactor < 0 && tm.timeResource > 0 && pastPositions.Count != 0)
+        if (TimeManager.timeFactor < 0 && tm.timeResource > 0 && pastPositions.Count != 0)
         {
             gameObject.transform.position = pastPositions.Pop();
         }
@@ -82,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
     void StoreLocation()
     {
-        if (tm.timeFactor > 0)
+        if (TimeManager.timeFactor > 0)
         {
             pastPositions.Push(transform.position);
         }
