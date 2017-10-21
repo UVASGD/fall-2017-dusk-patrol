@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
 
-	public float timeLimit = 3;
-	public float timeFactor;
+	public static float timeLimit = 3;
+	public static float timeFactor;
+    public static float maxCoolDown = 10;
+
+    private float coolDownTimer = 0;
+    private float timeTravelTimer = 0;
+    private bool onCoolDown = false;
 
 	// Use this for initialization
 	void Start () {
@@ -13,10 +18,21 @@ public class TimeManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetButton ("Fire2")) {
+	void Update ()
+    {
+		if (Input.GetButton ("Fire2") && timeTravelTimer < timeLimit)
+        {
+            //Debug.Log("Backtracking");
 			timeFactor = -1;
-		} else {
+            coolDownTimer = 0;
+            timeTravelTimer += Time.deltaTime;
+		}
+        else
+        {
+            //Debug.Log("CoolDown");
+            coolDownTimer += Time.deltaTime;
+            if (coolDownTimer >= maxCoolDown)
+                timeTravelTimer = 0;
 			timeFactor = 1;
 		}
 	}

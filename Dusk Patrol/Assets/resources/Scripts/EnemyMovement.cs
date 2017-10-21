@@ -28,15 +28,18 @@ public class EnemyMovement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.GetComponent<HealthScript>().TakeDamage(colDamage);
+        if (collision.gameObject.GetComponent<HealthScript>())
+        {
+            collision.gameObject.GetComponent<HealthScript>().TakeDamage(colDamage);
+        }
         this.GetComponent<HealthScript>().TakeDamage(colDamage);
     }
 
     // Update is called once per frame
     void Update () {
-		t += Time.deltaTime * tm.timeFactor;
+		t += Time.deltaTime * TimeManager.timeFactor;
         movement = this.getMovement(t);
-        gameObject.GetComponent<Rigidbody2D>().velocity = movement * speed * Time.deltaTime * tm.timeFactor;
+        gameObject.GetComponent<Rigidbody2D>().velocity = movement * speed * Time.deltaTime * TimeManager.timeFactor;
         CameraScript.WrapAround(gameObject);
     }
 

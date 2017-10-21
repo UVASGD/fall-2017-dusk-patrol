@@ -21,6 +21,6 @@ public class TimeBarScript : MonoBehaviour {
 
 	private void handleBar(){
 		float currentTime = timeBar.getTime();
-		content.fillAmount = currentTime / timeBar.timeLimit;
+		content.fillAmount = currentTime / TimeManager.timeLimit;
 	}
 }

@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject bullet;
 
+    private Rigidbody2D rigidBody;
     private Vector2 leftGun;
     private Vector2 rightGun;
     private float speed = 7f;
@@ -16,13 +17,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        rigidBody = GetComponent<Rigidbody2D>();
         SetGunLocations();
     }
 	
 	void Update ()
     {
-        MovePlayer();
-        Shoot(bullet);
+        if (TimeManager.timeFactor > 0)
+        {
+            MovePlayer();
+            Shoot(bullet);
+        }
+        else
+        {
+            rigidBody.velocity = Vector2.zero;
+        }
 
         SetGunLocations();
     }
@@ -32,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         float translationX = Input.GetAxis("Horizontal");
         float translationY = Input.GetAxis("Vertical");
 
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(translationX, translationY) * speed;
+        rigidBody.velocity = new Vector2(translationX, translationY) * speed;
         CameraScript.WrapAround(gameObject);
     }
 
