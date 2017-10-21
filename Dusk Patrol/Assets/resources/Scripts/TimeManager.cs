@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
 
-    public static float timeLimit = 3;
+    public static float timeLimit = 1f;
     public static float timeFactor;
-    public static float maxCoolDown = 10;
+    public static float maxCoolDown = 4;
 
     private float coolDownTimer = 0;
     private float timeTravelTimer = 0;

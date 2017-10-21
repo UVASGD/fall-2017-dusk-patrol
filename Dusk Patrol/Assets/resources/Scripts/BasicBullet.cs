@@ -11,6 +11,7 @@ public class BasicBullet : MonoBehaviour
     private float timer = 0f;
     private float despawnedTime = 0f;
     private bool isDespawn = false;
+    private bool respawned = false;
 
 	void Awake ()
     {
@@ -27,21 +28,24 @@ public class BasicBullet : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().enabled = true;
             GetComponent<Collider2D>().enabled = true;
-            Debug.Log("Respawn Bullet");
+            isDespawn = false;
         }
 
         if(!isDespawn)
             MoveBullet();
 
-        if (timer - despawnedTime >= TimeManager.timeLimit)
+        if ((timer - despawnedTime) >= TimeManager.timeLimit)
+        {
             Destroy(gameObject);
+        }
 
         Vector3 viewPos = Camera.main.WorldToViewportPoint(transform.position);
-        if (viewPos.y > 1 || viewPos.y < 0)
+        if ((viewPos.y > 1 || viewPos.y < 0) && TimeManager.timeFactor > 0 && !isDespawn)
         {
             isDespawn = true;
+            despawnedTime = timer;
             GetComponent<SpriteRenderer>().enabled = false;
-            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;            
         }
     }
 
@@ -54,16 +58,16 @@ public class BasicBullet : MonoBehaviour
     {
         if (col.gameObject.GetComponent<HealthScript>())
         {
-            if (isEnemyBullet == -1 && col.name.Equals("Player") || isEnemyBullet == 1 && col.name.Contains("Enemy"))
+            if (isEnemyBullet == -1 && col.tag.Equals("Player") || isEnemyBullet == 1 && col.tag.Equals("Enemy"))
             {
                 col.gameObject.GetComponent<HealthScript>().TakeDamage(damage);
+                despawnedTime = timer;
+                isDespawn = true;
+                GetComponent<SpriteRenderer>().enabled = false;
+                GetComponent<Collider2D>().enabled = false;
                 Debug.Log(col.name + "Damage");
             }
         }
-        despawnedTime = timer;
-        isDespawn = true;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider2D>().enabled = false;
     }
 
     void MoveBullet()
