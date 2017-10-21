@@ -7,11 +7,14 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     Button startButton;
+	Button creditButton;
 
     void Awake()
     {
         startButton = (Button)GameObject.Find("StartButton").GetComponent<Button>();
         startButton.onClick.AddListener(() => OnClick());
+		creditButton = (Button)GameObject.Find("CreditButton").GetComponent<Button>();
+		creditButton.onClick.AddListener(() => OnClickI());
     }
 	
 	// Update is called once per frame
@@ -21,6 +24,10 @@ public class MainMenu : MonoBehaviour
 
     void OnClick()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Level 1");
     }
+	void OnClickI()
+	{
+		SceneManager.LoadScene("Credit Scene");
+	}
 }
