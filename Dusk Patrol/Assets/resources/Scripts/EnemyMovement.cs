@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
 
-    public float speed = 10;
-	public  float colDamage = 10;
+    public float speed;
+	public  float colDamage;
     private Rigidbody2D myRigidBody;
     private Vector2 movement;
     private float t;
@@ -28,23 +28,28 @@ public class EnemyMovement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<HealthScript>())
-        {
-            collision.gameObject.GetComponent<HealthScript>().TakeDamage(colDamage);
-        }
+        collision.gameObject.GetComponent<HealthScript>().TakeDamage(colDamage);
         this.GetComponent<HealthScript>().TakeDamage(colDamage);
     }
 
     // Update is called once per frame
     void Update () {
-		t += Time.deltaTime * TimeManager.timeFactor;
-        movement = this.getMovement(t);
-        gameObject.GetComponent<Rigidbody2D>().velocity = movement * speed * Time.deltaTime * TimeManager.timeFactor;
-        CameraScript.WrapAround(gameObject);
-    }
+		t += Time.deltaTime * tm.timeFactor;
+		movement = this.getMovement(t).normalized;
+		myRigidBody.velocity = movement * speed * Time.deltaTime * tm.timeFactor;
 
-    Vector2 getMovement(float t)
+		CameraScript.WrapAround(gameObject);
+     }
+
+    public virtual Vector2 getMovement(float t)
     {
-        return new Vector2(1, -2 * t);
+        float x = t;
+        float y = Mathf.Log(t) + 4;
+        // float y = -Mathf.Log(t) + 4;
+        // x = [0, 2(Pi)]
+        // float z = ?;
+        // float c = some constant;
+        // float y = z*c(Mathf.cos(c*t);
+        return new Vector2(x, y);
     }
 }
