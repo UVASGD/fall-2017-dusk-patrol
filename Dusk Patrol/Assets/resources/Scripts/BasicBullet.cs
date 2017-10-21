@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class BasicBullet : MonoBehaviour
 {
-    public float damage = 10;
-    private float speed = 10;
+    public float damage;
+    public float speed;
     private Rigidbody2D rigidBody;
     private float isEnemyBullet = -1; //default as enemy bullet
+    private float timer = 0f;
+    private float despawnedTime = 0f;
+    private bool isDespawn = false;
 
 	void Awake ()
     {
@@ -16,7 +19,19 @@ public class BasicBullet : MonoBehaviour
 	
 	void Update ()
     {
-        MoveBullet();
+        timer += Time.deltaTime * TimeManager.timeFactor;
+        if (timer <= 0f)
+            Destroy(gameObject);
+        if (timer <= despawnedTime)
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
+            Debug.Log("Respawn Bullet");
+        }
+        if(!isDespawn)
+            MoveBullet();
+        else
+            if (timer - despawnedTime >= TimeManager.timeLimit)
+                Destroy(gameObject);
     }
 
     public void setAsPlayerBullet()
@@ -26,17 +41,32 @@ public class BasicBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(gameObject);
-        col.gameObject.GetComponent<HealthScript>().TakeDamage(damage);
+        if (col.gameObject.GetComponent<HealthScript>())
+        {
+            if (isEnemyBullet == -1 && col.name.Equals("Player") || isEnemyBullet == 1 && col.name.Contains("Enemy"))
+            {
+                col.gameObject.GetComponent<HealthScript>().TakeDamage(damage);
+                Debug.Log(col.name + "Damage");
+            }
+        }
+        despawnedTime = timer;
+        isDespawn = true;
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        Debug.Log("Move Out of Screen");
+        isDespawn = true;
     }
 
     void MoveBullet()
     {
-        transform.position += isEnemyBullet * new Vector3(0, speed * Time.deltaTime, 0);
+        rigidBody.velocity = isEnemyBullet * speed * GetMovement(timer) * Time.deltaTime * TimeManager.timeFactor;
+    }
+
+    Vector2 GetMovement(float t)
+    {
+        return new Vector2(0, 2);
     }
 }
