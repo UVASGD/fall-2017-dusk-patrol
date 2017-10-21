@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject bullet;
     public TimeManager tm;
+    public CloneMovement cloneM;
 
     private Vector2 leftGun;
     private Vector2 rightGun;
@@ -17,12 +18,16 @@ public class PlayerMovement : MonoBehaviour
     private float vertScale = 1.5f; //scale used to set how far in front of the plane to make the bullets
 
     private Vector2 currPosition;
+    private Vector2 tempPop;
     Stack<Vector2> pastPositions;
+    Stack<Vector2> clonePositions;
 
     void Awake()
     {
         SetGunLocations();
         pastPositions = new Stack<Vector2>();
+        clonePositions = new Stack<Vector2>();
+        cloneM = new CloneMovement();
     }
 
     private void Start()
@@ -41,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         SetGunLocations();
         BackTrack();
-
+        CreateClone();
     }
 
     void MovePlayer()
@@ -72,9 +77,11 @@ public class PlayerMovement : MonoBehaviour
 
     void BackTrack()
     {
-        if (tm.timeFactor < 0 && tm.timeResource > 0 && pastPositions.Count != 0)
+        if (tm.timeFactor < 0 && pastPositions.Count != 0)
         {
-            gameObject.transform.position = pastPositions.Pop();
+            tempPop = pastPositions.Pop();
+            clonePositions.Push(tempPop);
+            gameObject.transform.position = tempPop;
         }
     }
 
@@ -85,10 +92,17 @@ public class PlayerMovement : MonoBehaviour
             pastPositions.Push(transform.position);
         }
     }
-        
+
     void SetGunLocations()
     {
         leftGun = transform.position + horizScale * Vector3.left + vertScale * Vector3.up;
         rightGun = transform.position - horizScale * Vector3.left + vertScale * Vector3.up;
+    }
+
+    void CreateClone()
+    {
+
+        cloneM.TakeStack(clonePositions);
+
     }
 }
