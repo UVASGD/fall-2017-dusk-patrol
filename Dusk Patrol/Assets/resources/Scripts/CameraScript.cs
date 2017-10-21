@@ -8,6 +8,9 @@ public class CameraScript : MonoBehaviour
 
 	void Awake ()
     {
+		//Camera.main.aspect = 0.6f;
+
+		Screen.SetResolution (384, 680, false);
         //viewEdgeX = Camera.main.orthographicSize * Screen.width / Screen.height;
     }
 
@@ -15,6 +18,7 @@ public class CameraScript : MonoBehaviour
     {
         //in case the edges change
         //viewEdgeX = Camera.main.orthographicSize * Screen.width / Screen.height;
+		//Screen.SetResolution (384, 680, true);
     }
 
     public static void WrapAround(GameObject obj)

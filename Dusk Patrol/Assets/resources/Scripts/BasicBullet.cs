@@ -58,6 +58,7 @@ public class BasicBullet : MonoBehaviour
     {
         Debug.Log("Move Out of Screen");
         isDespawn = true;
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 
     void MoveBullet()
