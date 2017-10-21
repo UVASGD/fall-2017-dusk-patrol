@@ -5,26 +5,43 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject bullet;
+    public TimeManager tm;
 
     private Vector2 leftGun;
     private Vector2 rightGun;
     private float speed = 7f;
     private float maxCoolDown = 0.2f; // 1/5th of a second
     private float currCoolDown = 0f;
+
     private float horizScale = 1.1f; //scale used to get the location of the guns
     private float vertScale = 1.5f; //scale used to set how far in front of the plane to make the bullets
+
+    private Vector2 currPosition;
+    Stack<Vector2> pastPositions;
 
     void Awake()
     {
         SetGunLocations();
+        pastPositions = new Stack<Vector2>();
     }
-	
-	void Update ()
+
+    private void Start()
+    {
+        if (tm == null)
+        {
+            tm = FindObjectOfType<TimeManager>();
+        }
+    }
+
+    void Update()
     {
         MovePlayer();
         Shoot(bullet);
+        StoreLocation();
 
         SetGunLocations();
+        BackTrack();
+
     }
 
     void MovePlayer()
@@ -53,6 +70,22 @@ public class PlayerMovement : MonoBehaviour
         currCoolDown += Time.deltaTime;
     }
 
+    void BackTrack()
+    {
+        if (tm.timeFactor < 0 && tm.timeResource > 0 && pastPositions.Count != 0)
+        {
+            gameObject.transform.position = pastPositions.Pop();
+        }
+    }
+
+    void StoreLocation()
+    {
+        if (tm.timeFactor > 0)
+        {
+            pastPositions.Push(transform.position);
+        }
+    }
+        
     void SetGunLocations()
     {
         leftGun = transform.position + horizScale * Vector3.left + vertScale * Vector3.up;
