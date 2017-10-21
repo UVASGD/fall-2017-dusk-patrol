@@ -16,15 +16,12 @@ public class EnemyShooting : MonoBehaviour
 
     void Awake()
     {
-        Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+        /*Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
         if (viewPos.x > 1 || viewPos.x<0)
             return;
         if (viewPos.y > 1|| viewPos.y<0)
-            return;
+            return;*/
 
-
-        float random = Random.Range(0f, 100f);
-        if (random < 30f)
         health = GetComponent<HealthScript>();
 
         shootTimes = new float[10];
@@ -41,25 +38,29 @@ public class EnemyShooting : MonoBehaviour
             Debug.Log("Not Dead");
             if (TimeManager.timeFactor > 0)
             {
-                timer += Time.deltaTime * TimeManager.timeFactor;
-                if (timer >= shootTimes[shootTimesIndex])
-                {
-                    Shoot(enemyBullet);
-                    shootTimesIndex++;
-                    if (shootTimesIndex <= shootTimes.Length)
-                        shootTimesIndex = 0;
-                    timer = 0;
-                }
+				Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+				if (viewPos.y >= 0 && viewPos.y <= 1) {
+					timer += Time.deltaTime * TimeManager.timeFactor;
+					if (timer >= shootTimes [shootTimesIndex]) {
+						Shoot (enemyBullet);
+						shootTimesIndex++;
+						if (shootTimesIndex <= shootTimes.Length)
+							shootTimesIndex = 0;
+						timer = 0;
+					}
+				}
             }
             else if (TimeManager.timeFactor <= 0)
             {
-                timer -= Time.deltaTime * TimeManager.timeFactor;
-                if (timer < 0f)
-                {
-                    if(shootTimesIndex > 0)
-                        shootTimesIndex--;
-                    timer = shootTimes[shootTimesIndex];
-                }
+				Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+					if (viewPos.y >= 0 && viewPos.y <= 1) {
+					timer -= Time.deltaTime * TimeManager.timeFactor;
+					if (timer < 0f) {
+						if (shootTimesIndex > 0)
+							shootTimesIndex--;
+						timer = shootTimes [shootTimesIndex];
+					}
+				}
             }
         }
     }
