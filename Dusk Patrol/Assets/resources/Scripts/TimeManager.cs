@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
 
-    public static float timeLimit = 1f;
+    public static float timeLimit = 3f;
     public static float timeFactor;
     public static float maxCoolDown = 4;
 

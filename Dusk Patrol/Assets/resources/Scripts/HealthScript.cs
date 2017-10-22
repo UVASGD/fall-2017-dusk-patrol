@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class HealthScript : MonoBehaviour
 
         if (currHealth <= 0)
         {
+			if (isPlayer) {
+				SceneManager.LoadScene (0);
+			}
             isDead = true;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;

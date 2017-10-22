@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Random.value < 0.005) { //Should call once every ~5ish seconds
+		if (TimeManager.timeFactor > 0 && Random.value < 0.005) { //Should call once every ~5ish seconds
 			spawn(Random.Range(0,spawns.Length - 1));
 		}
 	}
@@ -25,7 +25,7 @@ public class Spawner : MonoBehaviour {
 			float xPos = Random.value;
 			float yPos = (Random.value - 0.5f) / 8;
 			Vector2 location = Camera.main.ViewportToWorldPoint (new Vector3 (xPos, yPos + 1.25f, 0));
-			Instantiate (prefab, location, Quaternion.identity);
+			Instantiate (prefab, location, transform.rotation);
 		}
 	}
 }
