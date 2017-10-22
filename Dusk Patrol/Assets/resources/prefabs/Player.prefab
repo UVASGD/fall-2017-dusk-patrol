@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 60702326215978808}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 1489548075602676, guid: de1e97840993dbc45bd499c8ca1d7608, type: 2}
+  tm: {fileID: 0}
 --- !u!114 &114870801856855296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  isDead: 0
+  isPlayer: 1
 --- !u!212 &212725424401266078
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114074824620721420}
   m_Layer: 0
   m_Name: Enemy Zig Zag
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  isDead: 0
+  isPlayer: 0
 --- !u!212 &212117103780050146
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -6,6 +6,7 @@ public class HealthScript : MonoBehaviour
 {
     public float maxHealth;
     public bool isDead = false;
+	public bool isPlayer;
 
     private float currHealth;
     private float timer = 0;
@@ -33,7 +34,11 @@ public class HealthScript : MonoBehaviour
             isDead = false;
             GetComponent<SpriteRenderer>().enabled = true;
             GetComponent<Collider2D>().enabled = true;
-			GetComponent<PlayerMovement> ().enabled = true;
+			if (isPlayer) {
+				GetComponent<PlayerMovement> ().enabled = true;
+			} else {
+				GetComponent<EnemyMovement> ().enabled = true;
+			}
             timeDead = 0f;
         }
     }
@@ -48,7 +53,11 @@ public class HealthScript : MonoBehaviour
             isDead = true;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
-			GetComponent<PlayerMovement> ().enabled = false;
+			if (isPlayer) {
+				GetComponent<PlayerMovement> ().enabled = false;
+			} else {
+				GetComponent<EnemyMovement> ().enabled = false;
+			}
             timeDead = timer;
         }
     }
