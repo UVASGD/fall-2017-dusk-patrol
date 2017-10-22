@@ -8,13 +8,16 @@ public class MainMenu : MonoBehaviour
 {
     Button startButton;
 	Button creditButton;
+	Button quitButton;
 
     void Awake()
     {
         startButton = (Button)GameObject.Find("StartButton").GetComponent<Button>();
-        startButton.onClick.AddListener(() => OnClick());
+        startButton.onClick.AddListener(() => OnClickStart());
 		creditButton = (Button)GameObject.Find("CreditButton").GetComponent<Button>();
-		creditButton.onClick.AddListener(() => OnClickI());
+		creditButton.onClick.AddListener(() => OnClickCredits());
+		quitButton = (Button)GameObject.Find ("QuitButton").GetComponent<Button> ();
+		quitButton.onClick.AddListener (() => OnClickQuit ());
     }
 	
 	// Update is called once per frame
@@ -22,12 +25,16 @@ public class MainMenu : MonoBehaviour
 		
 	}
 
-    void OnClick()
+    void OnClickStart()
     {
         SceneManager.LoadScene("Level 1");
     }
-	void OnClickI()
+	void OnClickCredits()
 	{
 		SceneManager.LoadScene("Credit Scene");
+	}
+	void OnClickQuit()
+	{
+		Application.Quit ();
 	}
 }

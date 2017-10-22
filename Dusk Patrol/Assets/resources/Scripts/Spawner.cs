@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Random.value < 0.0025) { //Should call once every ~10ish seconds
+		if (Random.value < 0.005) { //Should call once every ~5ish seconds
 			spawn(Random.Range(0,spawns.Length - 1));
 		}
 	}
