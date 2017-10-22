@@ -130,7 +130,7 @@ MonoBehaviour:
   speed: 100
   colDamage: 10
   tm: {fileID: 0}
-  direction: 0
+  direction: 1
 --- !u!114 &114385651425587408
 MonoBehaviour:
   m_ObjectHideFlags: 1

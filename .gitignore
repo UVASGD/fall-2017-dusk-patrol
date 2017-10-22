@@ -37,3 +37,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 Dusk Patrol/Assets/UnityVS.meta
+.DS_Store
