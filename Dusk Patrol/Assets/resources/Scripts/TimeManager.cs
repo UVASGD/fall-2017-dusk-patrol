@@ -26,19 +26,23 @@ public class TimeManager : MonoBehaviour {
 		if (timeResource < maxTimeResource) {
 			timeResource = timeResource + 0.1f;
 		}
-		if (Input.GetButton("Fire2") && timeTravelTimer < timeLimit && timeResource > 0.0f)
-        {
-            //Debug.Log("Backtracking");
-            timeFactor = -1;
-            coolDownTimer = 0;
-            timeTravelTimer += Time.deltaTime;
-            if (timeResource > 0.5f)
-            {
-                timeResource = timeResource - 0.3f;
-            }
-            else
-                timeResource = -0.3f;
-        }
+		if (Input.GetButton ("Fire2")) {
+
+			if (timeTravelTimer < timeLimit && timeResource > 0.0f) {
+				//Debug.Log("Backtracking");
+				timeFactor = -1;
+				coolDownTimer = 0;
+				timeTravelTimer += Time.deltaTime;
+				if (timeResource > 0.5f) {
+					timeResource = timeResource - 0.3f;
+				} else
+					timeResource = -0.3f;
+			} else {
+				timeFactor = 0;
+				timeResource -= 0.1f;
+			}
+
+		}
         else
         {
             timeFactor = 1;

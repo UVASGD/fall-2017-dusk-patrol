@@ -59,14 +59,10 @@ public class PlayerMovement : MonoBehaviour
 		Vector3 mousepos = Input.mousePosition;
 
 		Vector3 mouseviewportpos = Camera.main.ScreenToViewportPoint (mousepos);
-		if (mouseviewportpos.x >= 0 && mouseviewportpos.x <= 1 && mouseviewportpos.y >= 0 && mouseviewportpos.y <= 1) {
-			Vector3 mouseworldpoint = Camera.main.ScreenToWorldPoint (mousepos);
-			Vector2 delta = mouseworldpoint - gameObject.transform.position;
-			Vector2 movement = delta.normalized * speed * (Mathf.Atan (delta.magnitude));
-			gameObject.GetComponent<Rigidbody2D> ().velocity = movement;
-		} else {
-			gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
-		}
+		Vector3 mouseworldpoint = Camera.main.ViewportToWorldPoint(new Vector2(Mathf.Max(Mathf.Min(mouseviewportpos.x, 1),0), Mathf.Max(Mathf.Min(mouseviewportpos.y, 1), 0)));
+		Vector2 delta = mouseworldpoint - gameObject.transform.position;
+		Vector2 movement = delta.normalized * speed * (Mathf.Atan (delta.magnitude));
+		gameObject.GetComponent<Rigidbody2D> ().velocity = movement;
         CameraScript.WrapAround(gameObject);
     }
 
@@ -89,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     void BackTrack()
     {
-        if (TimeManager.timeFactor < 0 && tm.timeResource > 0 && pastPositions.Count != 0)
+        if (TimeManager.timeFactor < 0 && pastPositions.Count != 0)
         {
             gameObject.transform.position = pastPositions.Pop();
         }
