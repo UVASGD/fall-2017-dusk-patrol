@@ -26,7 +26,7 @@ public class TimeManager : MonoBehaviour {
 		if (timeResource < maxTimeResource) {
 			timeResource = timeResource + 0.1f;
 		}
-        if (Input.GetButton("Fire2") && timeTravelTimer < timeLimit)
+		if (Input.GetButton("Fire2") && timeTravelTimer < timeLimit && timeResource > 0.0f)
         {
             //Debug.Log("Backtracking");
             timeFactor = -1;
@@ -37,7 +37,7 @@ public class TimeManager : MonoBehaviour {
                 timeResource = timeResource - 0.3f;
             }
             else
-                timeResource = 0;
+                timeResource = -0.3f;
         }
         else
         {
