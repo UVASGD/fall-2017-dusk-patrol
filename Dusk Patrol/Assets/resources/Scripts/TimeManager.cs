@@ -10,33 +10,29 @@ public class TimeManager : MonoBehaviour {
 
     private float coolDownTimer = 0;
     private float timeTravelTimer = 0;
-    private bool onCoolDown = false;
 
-	public float maxTimeResource = 3f;
+	public float maxTimeResource = 180f;
     public float timeResource;
 
 	// Use this for initialization
 	void Start () {
-		
+		timeResource = maxTimeResource;
 	}
 	
 	// Update is called once per frame
     void Update ()
     {
 		if (timeResource < maxTimeResource) {
-			timeResource = timeResource + 0.1f;
+			timeResource = timeResource + 0.05f;
 		}
 		if (Input.GetButton ("Fire2")) {
 
-			if (timeTravelTimer < timeLimit && timeResource > 0.0f) {
+			if (timeResource > 0.0f) {
 				//Debug.Log("Backtracking");
 				timeFactor = -1;
 				coolDownTimer = 0;
 				timeTravelTimer += Time.deltaTime;
-				if (timeResource > 0.5f) {
-					timeResource = timeResource - 0.3f;
-				} else
-					timeResource = -0.3f;
+				timeResource -= 0.1f;
 			} else {
 				timeFactor = 0;
 				timeResource -= 0.1f;
