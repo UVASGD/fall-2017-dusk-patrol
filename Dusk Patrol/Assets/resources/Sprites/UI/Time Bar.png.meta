@@ -1,12 +1,15 @@
 fileFormatVersion: 2
 guid: c9247acda93d38347998d65bc70e6ef7
-timeCreated: 1508537422
+timeCreated: 1509815390
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Bar
+    21300000: Time Bar
     21300002: Time Gone
-    21300004: Time Bar_2
+    21300004: Time Bar
+    21300006: Time Not Fine
+    21300008: Bar Fine
+    21300010: Time Fine
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -33,6 +36,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+    filterMode: -1
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -77,41 +81,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bar
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 6
-        width: 64
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Time Gone
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 64
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Time Bar_2
+      name: Time Not Fine
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 3
+        width: 5
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Time Fine
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 5
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Time Bar
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 5
+        height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

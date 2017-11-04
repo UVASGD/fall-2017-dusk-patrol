@@ -12,6 +12,7 @@ public class TimeManager : MonoBehaviour {
     private float timeTravelTimer = 0;
     private bool onCoolDown = false;
 
+	public float maxTimeResource = 3f;
     public float timeResource;
 
 	// Use this for initialization
@@ -22,7 +23,9 @@ public class TimeManager : MonoBehaviour {
 	// Update is called once per frame
     void Update ()
     {
-        timeResource = timeResource + 0.1f;
+		if (timeResource < maxTimeResource) {
+			timeResource = timeResource + 0.1f;
+		}
         if (Input.GetButton("Fire2") && timeTravelTimer < timeLimit)
         {
             //Debug.Log("Backtracking");
@@ -47,6 +50,6 @@ public class TimeManager : MonoBehaviour {
 	}
 
 	public float getTime(){
-		return timeLimit;
+		return timeResource;
 	}
 }

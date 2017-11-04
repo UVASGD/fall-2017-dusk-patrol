@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TimeBarScript : MonoBehaviour {
+	
 	public TimeManager timeBar;
 	public Image content;
 
@@ -11,7 +12,7 @@ public class TimeBarScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		timeBar = FindObjectOfType<TimeManager> ();
 	}
 
 	// Update is called once per frame
@@ -21,6 +22,6 @@ public class TimeBarScript : MonoBehaviour {
 
 	private void handleBar(){
 		float currentTime = timeBar.getTime();
-		content.fillAmount = currentTime / TimeManager.timeLimit;
+		content.fillAmount = currentTime / timeBar.maxTimeResource;
 	}
 }
