@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Vector2 leftGun;
     private Vector2 rightGun;
-    private float speed = 7f;
+    public float speed = 7f;
     private float maxCoolDown = 0.2f; // 1/5th of a second
     private float currCoolDown = 0f;
 
