@@ -46,8 +46,8 @@ public class HealthScript : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currHealth -= damage;
-        healthStack.Push(new HealthTime(currHealth, timer));
+		healthStack.Push(new HealthTime(currHealth, timer));
+        currHealth -= damage; 
 
         if (currHealth <= 0)
         {

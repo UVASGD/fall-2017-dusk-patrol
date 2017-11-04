@@ -28,9 +28,11 @@ public class EnemyMovement : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<HealthScript>())
-            collision.gameObject.GetComponent<HealthScript>().TakeDamage(colDamage);
-        this.GetComponent<HealthScript>().TakeDamage(colDamage);
+		if (TimeManager.timeFactor > 0) {
+			if (collision.gameObject.GetComponent<HealthScript> ())
+				collision.gameObject.GetComponent<HealthScript> ().TakeDamage (colDamage);
+			this.GetComponent<HealthScript> ().TakeDamage (colDamage);
+		}
     }
 
     // Update is called once per frame

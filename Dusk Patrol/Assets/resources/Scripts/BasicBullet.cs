@@ -56,7 +56,7 @@ public class BasicBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.GetComponent<HealthScript>())
+		if (TimeManager.timeFactor > 0 && col.gameObject.GetComponent<HealthScript>())
         {
             if (isEnemyBullet == -1 && col.tag.Equals("Player") || isEnemyBullet == 1 && col.tag.Equals("Enemy"))
             {
