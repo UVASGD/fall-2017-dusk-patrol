@@ -11,7 +11,7 @@ public class TimeManager : MonoBehaviour {
     private float coolDownTimer = 0;
     private float timeTravelTimer = 0;
 
-	public float maxTimeResource = 180f;
+	public float maxTimeResource = 500f;
     public float timeResource;
 
 	// Use this for initialization
@@ -22,9 +22,6 @@ public class TimeManager : MonoBehaviour {
 	// Update is called once per frame
     void Update ()
     {
-		if (timeResource < maxTimeResource) {
-			timeResource = timeResource + 0.05f;
-		}
 		if (Input.GetButton ("Fire2")) {
 
 			if (timeResource > 0.0f) {
@@ -35,12 +32,14 @@ public class TimeManager : MonoBehaviour {
 				timeResource -= 0.1f;
 			} else {
 				timeFactor = 0;
-				timeResource -= 0.1f;
 			}
 
 		}
         else
         {
+			if (timeResource < maxTimeResource) {
+				timeResource = timeResource + 0.05f;
+			}
             timeFactor = 1;
             //Debug.Log("CoolDown");
             coolDownTimer += Time.deltaTime;
