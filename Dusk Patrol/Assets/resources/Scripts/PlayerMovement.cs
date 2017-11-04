@@ -55,10 +55,18 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        float translationX = Input.GetAxis("Horizontal");
-        float translationY = Input.GetAxis("Vertical");
 
-        rigidBody.velocity = new Vector2(translationX, translationY) * speed;
+		Vector3 mousepos = Input.mousePosition;
+
+		Vector3 mouseviewportpos = Camera.main.ScreenToViewportPoint (mousepos);
+		if (mouseviewportpos.x >= 0 && mouseviewportpos.x <= 1 && mouseviewportpos.y >= 0 && mouseviewportpos.y <= 1) {
+			Vector3 mouseworldpoint = Camera.main.ScreenToWorldPoint (mousepos);
+			Vector2 delta = mouseworldpoint - gameObject.transform.position;
+			Vector2 movement = delta.normalized * speed * (Mathf.Atan (delta.magnitude));
+			gameObject.GetComponent<Rigidbody2D> ().velocity = movement;
+		} else {
+			gameObject.GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, 0);
+		}
         CameraScript.WrapAround(gameObject);
     }
 
