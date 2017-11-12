@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         {
             tm = FindObjectOfType<TimeManager>();
         }
+		shootystuff.volume = OptionScript.loadSettings ().SFX * 0.1f;
     }
 
     void Update()

@@ -55,7 +55,7 @@ public class OptionScript : MonoBehaviour {
 		return File.Exists (pathToFile);
 	}
 
-	static Options loadSettings() {
+	public static Options loadSettings() {
 		string pathToFile = Application.persistentDataPath + filename;
 		if (File.Exists (pathToFile)) {
 			BinaryFormatter bf = new BinaryFormatter ();

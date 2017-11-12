@@ -14,6 +14,7 @@ public class MainMenu : MonoBehaviour
 
     void Awake()
     {
+		buttonClicker.volume = OptionScript.loadSettings ().SFX;
         //startButton = (Button)GameObject.Find("StartButton").GetComponent<Button>();
         startButton.onClick.AddListener(() => OnClickStart());
 		//creditButton = (Button)GameObject.Find("CreditButton").GetComponent<Button>();

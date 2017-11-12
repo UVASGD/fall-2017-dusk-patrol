@@ -19,13 +19,16 @@ public class TimeManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		timeResource = maxTimeResource;
+		timeBack.volume = OptionScript.loadSettings ().SFX;
 	}
 	
 	// Update is called once per frame
     void Update ()
     {
 		if (Input.GetButton ("Fire2")) {
-			timeBack.Play ();
+			if (Input.GetButtonDown ("Fire2")) {
+				timeBack.Play ();
+			}
 			if (timeResource > 0.0f) {
 				//Debug.Log("Backtracking");
 				timeFactor = -1;
