@@ -6,10 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject bullet;
     public TimeManager tm;
+	public AudioSource shootystuff;
 
     private Rigidbody2D rigidBody;
     private Vector2 leftGun;
     private Vector2 rightGun;
+
     public float speed = 7f;
     private float maxCoolDown = 0.2f; // 1/5th of a second
     private float currCoolDown = 0f;
@@ -72,11 +74,13 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetButton("Fire1"))
             {
+				shootystuff.Play ();
                 GameObject bullet1 = Instantiate(bullet, leftGun, transform.rotation);
                 GameObject bullet2 = Instantiate(bullet, rightGun, transform.rotation);
 
                 bullet1.GetComponent<BasicBullet>().setAsPlayerBullet();
                 bullet2.GetComponent<BasicBullet>().setAsPlayerBullet();
+
             }
             currCoolDown = 0f;
         }

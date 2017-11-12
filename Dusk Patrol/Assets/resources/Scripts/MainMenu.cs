@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    Button startButton;
-	Button creditButton;
-	Button quitButton;
+    public Button startButton;
+	public Button creditButton;
+	public Button quitButton;
+
+	public AudioSource buttonClicker;
 
     void Awake()
     {
-        startButton = (Button)GameObject.Find("StartButton").GetComponent<Button>();
+        //startButton = (Button)GameObject.Find("StartButton").GetComponent<Button>();
         startButton.onClick.AddListener(() => OnClickStart());
-		creditButton = (Button)GameObject.Find("CreditButton").GetComponent<Button>();
+		//creditButton = (Button)GameObject.Find("CreditButton").GetComponent<Button>();
 		creditButton.onClick.AddListener(() => OnClickCredits());
-		quitButton = (Button)GameObject.Find ("QuitButton").GetComponent<Button> ();
+		//quitButton = (Button)GameObject.Find ("QuitButton").GetComponent<Button> ();
 		quitButton.onClick.AddListener (() => OnClickQuit ());
     }
 	
@@ -27,14 +29,17 @@ public class MainMenu : MonoBehaviour
 
     void OnClickStart()
     {
+		buttonClicker.Play ();
         SceneManager.LoadScene("Level 1");
     }
 	void OnClickCredits()
 	{
+		buttonClicker.Play ();
 		SceneManager.LoadScene("Credit Scene");
 	}
 	void OnClickQuit()
 	{
+		buttonClicker.Play ();
 		Application.Quit ();
 	}
 }
