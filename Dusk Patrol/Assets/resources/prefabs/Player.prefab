@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50644362322828698}
   - component: {fileID: 114870801856855296}
   - component: {fileID: 60702326215978808}
+  - component: {fileID: 82002287781309162}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -112,6 +113,86 @@ PolygonCollider2D:
       - {x: 0.19, y: -0.22999999}
       - {x: 0.19999999, y: -0.17999999}
       - {x: 0.08, y: 0}
+--- !u!82 &82002287781309162
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546660591856014}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: bf69562315efd824a88ba3ee5a2448dd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114682849007742342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,6 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1489548075602676, guid: de1e97840993dbc45bd499c8ca1d7608, type: 2}
   tm: {fileID: 0}
+  shootystuff: {fileID: 82002287781309162}
+  speed: 7
 --- !u!114 &114870801856855296
 MonoBehaviour:
   m_ObjectHideFlags: 1
