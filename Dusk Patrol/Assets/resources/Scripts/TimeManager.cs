@@ -14,6 +14,8 @@ public class TimeManager : MonoBehaviour {
 	public float maxTimeResource = 500f;
     public float timeResource;
 
+	public AudioSource timeBack;
+
 	// Use this for initialization
 	void Start () {
 		timeResource = maxTimeResource;
@@ -23,17 +25,18 @@ public class TimeManager : MonoBehaviour {
     void Update ()
     {
 		if (Input.GetButton ("Fire2")) {
-
+			timeBack.Play ();
 			if (timeResource > 0.0f) {
 				//Debug.Log("Backtracking");
 				timeFactor = -1;
 				coolDownTimer = 0;
 				timeTravelTimer += Time.deltaTime;
 				timeResource -= 0.1f;
+
 			} else {
 				timeFactor = 0;
-			}
 
+			}
 		}
         else
         {
