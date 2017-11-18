@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     public Button startButton;
+	public Button optionButton;
 	public Button creditButton;
 	public Button quitButton;
 
@@ -17,6 +18,7 @@ public class MainMenu : MonoBehaviour
 		buttonClicker.volume = OptionScript.loadSettings ().SFX;
         //startButton = (Button)GameObject.Find("StartButton").GetComponent<Button>();
         startButton.onClick.AddListener(() => OnClickStart());
+		optionButton.onClick.AddListener (() => OnClickOption ());
 		//creditButton = (Button)GameObject.Find("CreditButton").GetComponent<Button>();
 		creditButton.onClick.AddListener(() => OnClickCredits());
 		//quitButton = (Button)GameObject.Find ("QuitButton").GetComponent<Button> ();
@@ -33,6 +35,11 @@ public class MainMenu : MonoBehaviour
 		buttonClicker.Play ();
         SceneManager.LoadScene("Level 1");
     }
+	void OnClickOption()
+	{
+		buttonClicker.Play ();
+		SceneManager.LoadScene ("OptionsScreen");
+	}
 	void OnClickCredits()
 	{
 		buttonClicker.Play ();
