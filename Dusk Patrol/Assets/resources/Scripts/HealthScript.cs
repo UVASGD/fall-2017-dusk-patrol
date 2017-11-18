@@ -60,9 +60,9 @@ public class HealthScript : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
 			if (isPlayer) {
-				GetComponent<PlayerMovement> ().enabled = false;
+				//GetComponent<PlayerMovement> ().enabled = false;
 			} else {
-				GetComponent<EnemyMovement> ().enabled = false;
+				//GetComponent<EnemyMovement> ().enabled = false;
 				AudioSource.PlayClipAtPoint (enemydeath, gameObject.transform.position, OptionScript.loadSettings ().SFX);
 			}
             timeDead = timer;
