@@ -57,4 +57,8 @@ public class TimeManager : MonoBehaviour {
 	public float getTime(){
 		return timeResource;
 	}
+
+	public int getTimeFactor(){
+		return (int) timeFactor;
+	}
 }
