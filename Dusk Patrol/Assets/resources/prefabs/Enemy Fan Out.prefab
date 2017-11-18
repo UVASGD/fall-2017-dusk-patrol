@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7534dd5d7fc73d48a375f76b8f8185d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   isDead: 0
   isPlayer: 0
   enemydeath: {fileID: 8300000, guid: 823a72b03a816b9429038260f254264c, type: 3}

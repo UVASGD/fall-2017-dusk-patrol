@@ -26,15 +26,19 @@ public class BasicBullet : MonoBehaviour
         if (timer <= 0f)
             Destroy(gameObject);
 
-        if (timer <= despawnedTime)
+		if (timer <= despawnedTime && isDespawn)
         {
             GetComponent<SpriteRenderer>().enabled = true;
             GetComponent<Collider2D>().enabled = true;
             isDespawn = false;
+			Debug.Log ("Respawn");
         }
 
-        if(!isDespawn)
-            MoveBullet();
+		if (!isDespawn)
+			MoveBullet ();
+		else
+			rigidBody.velocity = new Vector2 (0, 0);
+		
 
         if ((timer - despawnedTime) >= TimeManager.timeLimit)
         {
