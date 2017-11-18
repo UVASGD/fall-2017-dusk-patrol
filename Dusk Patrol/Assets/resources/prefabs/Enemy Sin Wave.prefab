@@ -145,6 +145,7 @@ MonoBehaviour:
   maxHealth: 100
   isDead: 0
   isPlayer: 0
+  enemydeath: {fileID: 8300000, guid: 823a72b03a816b9429038260f254264c, type: 3}
 --- !u!212 &212536831004407374
 SpriteRenderer:
   m_ObjectHideFlags: 1
