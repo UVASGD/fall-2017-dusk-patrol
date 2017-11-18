@@ -34,7 +34,7 @@ public class TimeManager : MonoBehaviour {
 				timeFactor = -1;
 				coolDownTimer = 0;
 				timeTravelTimer += Time.deltaTime;
-				timeResource -= 0.1f;
+				timeResource -= Time.deltaTime;
 
 			} else {
 				timeFactor = 0;
@@ -44,7 +44,7 @@ public class TimeManager : MonoBehaviour {
         else
         {
 			if (timeResource < maxTimeResource) {
-				timeResource = timeResource + 0.05f;
+				timeResource = timeResource + 0.5f * Time.deltaTime;
 			}
             timeFactor = 1;
             //Debug.Log("CoolDown");
