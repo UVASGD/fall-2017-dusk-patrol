@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BasicBullet : MonoBehaviour
 {
+
+	public AudioClip clip;
     public float damage;
     public float speed;
     private Rigidbody2D rigidBody;
@@ -66,6 +68,7 @@ public class BasicBullet : MonoBehaviour
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<Collider2D>().enabled = false;
                 Debug.Log(col.name + "Damage");
+				AudioSource.PlayClipAtPoint (clip, gameObject.transform.position, OptionScript.loadSettings ().SFX);
             }
         }
     }
