@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossLaserShooting : MonoBehaviour {
 
     public GameObject bossLaser;
-        private HealthScript health;
+    private HealthScript health;
     private float maxCoolDown = 1f;
     private float currCoolDown = 0f;
     private float[] shootTimes;
@@ -33,7 +33,7 @@ public class BossLaserShooting : MonoBehaviour {
                 if (viewPos.y >= 0 && viewPos.y <= 1)
                 {
                     timer += Time.deltaTime * TimeManager.timeFactor;
-                    if (timer % 10f <=2)
+                    if (timer % 5f <=2)
                     {
                         Shoot(bossLaser);
                     
@@ -48,7 +48,9 @@ public class BossLaserShooting : MonoBehaviour {
     }
     void Shoot(GameObject bullet)
     {
-        Instantiate(bossLaser, transform.position - Vector3.up, Quaternion.identity);
+        Vector3 shift = new Vector3(0, 0, 0);
+        Instantiate(bossLaser, transform.position - Vector3.up - shift, Quaternion.Euler(0, 0, timer * 20f));
+        //bullet.transform.eulerAngles = new Vector3(timer*2.0f, timer*2.0f, timer * 2.0f);
     }
     void Despawn(GameObject bullet)
     {
