@@ -109,4 +109,9 @@ public class PlayerMovement : MonoBehaviour
         leftGun = transform.position + horizScale * Vector3.left + vertScale * Vector3.up;
         rightGun = transform.position - horizScale * Vector3.left + vertScale * Vector3.up;
     }
+
+	void SpawnClone() {
+		//Instantiate clone
+		//clone.getComponent<CloneMovement>().future_positions = current_stack
+	}
 }
