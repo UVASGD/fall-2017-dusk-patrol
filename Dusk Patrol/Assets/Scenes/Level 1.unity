@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: -0.5
   tileSizeY: 8
+  timeScript: {fileID: 0}
 --- !u!95 &179229205
 Animator:
   serializedVersion: 3
@@ -951,6 +952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: -0.5
   tileSizeY: 8
+  timeScript: {fileID: 0}
 --- !u!114 &1920659800 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114826154417338948, guid: e9976003833d457419ab1c48ebaa0839,
