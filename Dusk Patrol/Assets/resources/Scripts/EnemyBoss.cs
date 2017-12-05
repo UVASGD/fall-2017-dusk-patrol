@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyBoss : MonoBehaviour {
 
     public float speed;
 	public  float colDamage;

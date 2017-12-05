@@ -9,6 +9,8 @@ public class HealthScript : MonoBehaviour
     public bool isDead = false;
 	public bool isPlayer;
 
+	public AudioClip enemydeath;
+
     private float currHealth;
     private float timer = 0;
     private float timeDead = 0f;
@@ -58,9 +60,10 @@ public class HealthScript : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<Collider2D>().enabled = false;
 			if (isPlayer) {
-				GetComponent<PlayerMovement> ().enabled = false;
+				//GetComponent<PlayerMovement> ().enabled = false;
 			} else {
-				GetComponent<EnemyMovement> ().enabled = false;
+				//GetComponent<EnemyMovement> ().enabled = false;
+				AudioSource.PlayClipAtPoint (enemydeath, gameObject.transform.position, OptionScript.loadSettings ().SFX);
 			}
             timeDead = timer;
         }

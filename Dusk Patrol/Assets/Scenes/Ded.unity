@@ -421,7 +421,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Un-Die
+  m_Text: Nani?
 --- !u!222 &1053939601
 CanvasRenderer:
   m_ObjectHideFlags: 0

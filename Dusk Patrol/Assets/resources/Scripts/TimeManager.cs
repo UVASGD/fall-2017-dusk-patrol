@@ -19,19 +19,22 @@ public class TimeManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		timeResource = maxTimeResource;
+		timeBack.volume = OptionScript.loadSettings ().SFX;
 	}
 	
 	// Update is called once per frame
     void Update ()
     {
 		if (Input.GetButton ("Fire2")) {
-			timeBack.Play ();
+			if (Input.GetButtonDown ("Fire2")) {
+				timeBack.Play ();
+			}
 			if (timeResource > 0.0f) {
 				//Debug.Log("Backtracking");
 				timeFactor = -1;
 				coolDownTimer = 0;
 				timeTravelTimer += Time.deltaTime;
-				timeResource -= 0.1f;
+				timeResource -= Time.deltaTime;
 
 			} else {
 				timeFactor = 0;
@@ -41,7 +44,7 @@ public class TimeManager : MonoBehaviour {
         else
         {
 			if (timeResource < maxTimeResource) {
-				timeResource = timeResource + 0.05f;
+				timeResource = timeResource + 0.5f * Time.deltaTime;
 			}
             timeFactor = 1;
             //Debug.Log("CoolDown");
@@ -53,5 +56,9 @@ public class TimeManager : MonoBehaviour {
 
 	public float getTime(){
 		return timeResource;
+	}
+
+	public int getTimeFactor(){
+		return (int) timeFactor;
 	}
 }

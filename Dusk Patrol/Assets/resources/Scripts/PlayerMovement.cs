@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject bullet;
+	public GameObject clone_prefab;
     public TimeManager tm;
 	public AudioSource shootystuff;
 
@@ -20,13 +21,22 @@ public class PlayerMovement : MonoBehaviour
     private float vertScale = 0.75f; //scale used to set how far in front of the plane to make the bullets
 
     private Vector2 currPosition;
-    Stack<Vector2> pastPositions;
+	Stack<Vector2> past_positions;
+    Stack<Vector2> future_positions;
+
+	Stack<bool> past_shots;
+	Stack<bool> future_shots;
+
+	bool goingBack;
 
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         SetGunLocations();
-        pastPositions = new Stack<Vector2>();
+		past_positions = new Stack<Vector2> ();
+        future_positions = new Stack<Vector2>();
+		past_shots = new Stack<bool> ();
+		future_shots = new Stack<bool> ();
     }
 
     private void Start()
@@ -35,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         {
             tm = FindObjectOfType<TimeManager>();
         }
+		shootystuff.volume = OptionScript.loadSettings ().SFX;
     }
 
     void Update()
@@ -43,16 +54,24 @@ public class PlayerMovement : MonoBehaviour
         {
             MovePlayer();
             Shoot(bullet);
-            StoreLocation();
+			if (goingBack) {
+				SpawnClone ();
+				goingBack = false;
+			}
         }
         else
         {
+			goingBack = true;
             rigidBody.velocity = Vector2.zero;
         }        
 
+		StoreLocation();
         SetGunLocations();
         BackTrack();
 
+		/*if (Input.GetKeyDown (KeyCode.Tab)) {
+			SpawnClone ();
+		}*/
     }
 
     void MovePlayer()
@@ -89,9 +108,9 @@ public class PlayerMovement : MonoBehaviour
 
     void BackTrack()
     {
-        if (TimeManager.timeFactor < 0 && pastPositions.Count != 0)
+		if (TimeManager.timeFactor < 0 && past_positions.Count != 0)
         {
-            gameObject.transform.position = pastPositions.Pop();
+			gameObject.transform.position = past_positions.Pop();
         }
     }
 
@@ -99,8 +118,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (TimeManager.timeFactor > 0)
         {
-            pastPositions.Push(transform.position);
+			past_positions.Push(transform.position);
+			future_positions.Clear ();
+			future_shots.Clear ();
+			past_shots.Push(Input.GetButton("Fire1"));
         }
+		if (TimeManager.timeFactor < 0) {
+			future_positions.Push (gameObject.transform.position);
+			if (past_shots.Count > 0) {
+				future_shots.Push (past_shots.Pop());
+			}
+		}
     }
         
     void SetGunLocations()
@@ -108,4 +136,10 @@ public class PlayerMovement : MonoBehaviour
         leftGun = transform.position + horizScale * Vector3.left + vertScale * Vector3.up;
         rightGun = transform.position - horizScale * Vector3.left + vertScale * Vector3.up;
     }
+
+	void SpawnClone() {
+		GameObject clone = Instantiate (clone_prefab, gameObject.transform.position, transform.rotation);
+		clone.GetComponent<CloneMovement> ().startUp (future_positions, future_shots);
+		Debug.Log ("Spawned!");
+	}
 }
