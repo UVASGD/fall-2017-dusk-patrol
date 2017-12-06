@@ -1770,7 +1770,7 @@ Prefab:
     - target: {fileID: 114167389802998420, guid: 2f4ede3004576c44f88edf5300c6bd57,
         type: 2}
       propertyPath: level
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114922242489086404, guid: 2f4ede3004576c44f88edf5300c6bd57,
         type: 2}
@@ -1782,9 +1782,20 @@ Prefab:
       propertyPath: bossbar
       value: 
       objectReference: {fileID: 414092831}
+    - target: {fileID: 114167389802998420, guid: 2f4ede3004576c44f88edf5300c6bd57,
+        type: 2}
+      propertyPath: bossMover
+      value: 
+      objectReference: {fileID: 940502013}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f4ede3004576c44f88edf5300c6bd57, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &940502013 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114033014966760356, guid: 2f4ede3004576c44f88edf5300c6bd57,
+    type: 2}
+  m_PrefabInternal: {fileID: 940502012}
+  m_Script: {fileID: 11500000, guid: 065a5048c73492a4c9cefe0f981ad671, type: 3}
 --- !u!1001 &959610886
 Prefab:
   m_ObjectHideFlags: 0

@@ -12,13 +12,19 @@ public class EnemyBoss : EnemyMovement
 	public BossBar bossbar;
 
 
-	void Start() {
+	bool retreating;
 
+	void Start() {
+		retreating = false;
 	}
 
     // Update is called once per frame
     void Update()
     {
+		if (retreating) {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (0, -1) * speed * Time.deltaTime * TimeManager.timeFactor * 2;
+			return;
+		}
 		Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
 		if (viewPos.y >= 0 && viewPos.y <= 1) {
 			player.goToBoss ();
@@ -37,5 +43,9 @@ public class EnemyBoss : EnemyMovement
     {
 		return new Vector2 (0, 1);
     }
+
+	public void retreat() {
+		retreating = true;
+	}
 
 }

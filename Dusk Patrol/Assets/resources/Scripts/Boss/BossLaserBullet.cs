@@ -32,6 +32,8 @@ public class BossLaserBullet : MonoBehaviour
 	private bool freakout;
 	private float freakAmount;
 
+	public EnemyBoss bossMover;
+
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -69,14 +71,14 @@ public class BossLaserBullet : MonoBehaviour
         timer += Time.deltaTime * TimeManager.timeFactor;
 
 		if (freakout) {
-			freakAmount += Time.deltaTime * TimeManager.timeFactor;
-			light.intensity = freakAmount;
-			if (freakAmount > 1) {
-				light.range = light.range + Time.deltaTime * TimeManager.timeFactor;
-			}
-			if (freakAmount > 3) {
-				SceneManager.LoadScene ("END");
-			}
+				freakAmount += Time.deltaTime * TimeManager.timeFactor;
+				light.intensity = freakAmount;
+				if (freakAmount > 1) {
+					light.range = light.range + Time.deltaTime * TimeManager.timeFactor;
+				}
+				if (freakAmount > 3) {
+					SceneManager.LoadScene ("END");
+				}
 			return;
 		}
 
@@ -87,13 +89,17 @@ public class BossLaserBullet : MonoBehaviour
 
         if (isFiring)
         {
-            if (timer >= fireTime)
-            {
-                StopLaser();
-                isCoolDown = true;
-                timer = 0;
-            }
-            else
+			if (timer >= fireTime) {
+				StopLaser ();
+				isCoolDown = true;
+				timer = 0;
+			} else if (timer < 0) {
+				StopLaser ();
+				timer += chargeTime;
+				isCharging = true;
+				isCoolDown = false;
+				setDir = false;
+			} else
             {
                 if(coolDownDir == 1) //fire left to right
                     laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / fireTime) * angleDiff);
@@ -104,13 +110,17 @@ public class BossLaserBullet : MonoBehaviour
         }
         if (isCoolDown)
         {
-            if (timer >= coolDownTime)
-            {
-                timer = 0;
-                isCoolDown = false;
-                isCharging = true;
-                setDir = false;
-            }
+			if (timer >= coolDownTime) {
+				timer = 0;
+				isCoolDown = false;
+				isCharging = true;
+				setDir = false;
+			} else if (timer < 0) {
+				timer += fireTime;
+				ShootLaser ();
+				isCoolDown = false;
+				isCharging = false;
+			}
             else
             {
                 if (coolDownDir == 1)
@@ -131,13 +141,16 @@ public class BossLaserBullet : MonoBehaviour
         }
         if (isCharging)
         {
-            if (timer >= chargeTime)
-            {
-                timer = 0;
-                ShootLaser();
-                isCoolDown = false;
-                isCharging = false;
-            }
+			if (timer >= chargeTime) {
+				timer = 0;
+				ShootLaser ();
+				isCoolDown = false;
+				isCharging = false;
+			} else if (timer < 0) {
+				timer += coolDownTime;
+				isCoolDown = true;
+				timer = 0;
+			}
             else
             {
                 //sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, timer / chargeTime);
