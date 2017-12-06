@@ -53,8 +53,7 @@ public class HealthScript : MonoBehaviour
 
         if (currHealth <= 0)
         {
-            ScoreScript A = FindObjectOfType<ScoreScript>();
-            A.setScore(A.getScore()+50f);
+
 			if (isPlayer) {
 				SceneManager.LoadScene ("Ded");
 			}
@@ -66,6 +65,8 @@ public class HealthScript : MonoBehaviour
 			} else {
 				//GetComponent<EnemyMovement> ().enabled = false;
 				AudioSource.PlayClipAtPoint (enemydeath, gameObject.transform.position, OptionScript.loadSettings ().SFX);
+				ScoreScript A = FindObjectOfType<ScoreScript>();
+				A.setScore(A.getScore()+10f);
 			}
             timeDead = timer;
         }
