@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  colDamage: 10
+  colDamage: 0
   tm: {fileID: 0}
   size: 5
 --- !u!114 &114559031418055158
