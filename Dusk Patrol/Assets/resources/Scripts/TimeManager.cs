@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour {
 
     public static float timeLimit = 3f;
-    public static float timeFactor;
+    public static float timeFactor = 1;
     public static float maxCoolDown = 4;
 
     private float coolDownTimer = 0;
@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		timeResource = maxTimeResource;
-		timeBack.volume = OptionScript.loadSettings ().SFX;
+		//timeBack.volume = OptionScript.loadSettings ().SFX;
 	}
 	
 	// Update is called once per frame
