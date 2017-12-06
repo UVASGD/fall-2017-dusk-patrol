@@ -147,6 +147,7 @@ public class BossLaserBullet : MonoBehaviour
 				isCoolDown = false;
 				isCharging = false;
 			} else if (timer < 0) {
+				StopLaser ();
 				timer += coolDownTime;
 				isCoolDown = true;
 				timer = 0;
