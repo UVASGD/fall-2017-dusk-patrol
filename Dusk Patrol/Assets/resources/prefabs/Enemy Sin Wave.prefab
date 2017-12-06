@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50108777603588720}
   - component: {fileID: 114952186745329856}
   - component: {fileID: 114367721231530054}
-  - component: {fileID: 114236360806524252}
+  - component: {fileID: 114948133521490916}
   m_Layer: 0
   m_Name: Enemy Sin Wave
   m_TagString: Enemy
@@ -103,21 +103,6 @@ PolygonCollider2D:
       - {x: 0.21, y: -0.26}
       - {x: 0.21, y: -0.14999999}
       - {x: 0.11, y: 0.06}
---- !u!114 &114236360806524252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1288432712399136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed57c9467950e549accfa440f3071aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 100
-  colDamage: 0
-  tm: {fileID: 0}
-  direction: 1
 --- !u!114 &114367721231530054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,6 +116,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBullet: {fileID: 1882855640363068, guid: 8c18e6c85c4dd234c8a00cf4971d5bc4,
     type: 2}
+--- !u!114 &114948133521490916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288432712399136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab4a77c027b364ea7ae4e762ce7498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  colDamage: 0
+  tm: {fileID: 0}
+  size: 5
 --- !u!114 &114952186745329856
 MonoBehaviour:
   m_ObjectHideFlags: 1
