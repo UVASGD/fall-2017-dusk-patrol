@@ -18,9 +18,12 @@ public class BossLaserBullet : MonoBehaviour
     private bool isFiring = false;
     private bool isCoolDown = true;
     private bool isCharging = false;
-    private float baseAngle = 20f;
-    private float maxAngle = 160f;
+    private float leftAngle = 20f;
+    private float rightAngle = 160f;
+    private float targetAngle;
     private float angleDiff;
+    private float coolDownDir = 1; // 1 for coolDown right to left, -1 for coolDown left to right
+    private bool setDir = false;
 
     private Transform laserCannon;
 
@@ -31,11 +34,12 @@ public class BossLaserBullet : MonoBehaviour
         collider = GetComponent<Collider2D>();
         light = transform.parent.GetComponent<Light>();
 
-        angleDiff = maxAngle - baseAngle;
+        angleDiff = rightAngle - leftAngle;
+        targetAngle = leftAngle;
 
         laserCannon = transform.parent;
 
-        laserCannon.rotation = Quaternion.Euler(0, 0, maxAngle);
+        laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle);
     }
 	
 	// Update is called once per frame
@@ -52,7 +56,10 @@ public class BossLaserBullet : MonoBehaviour
             }
             else
             {
-                laserCannon.rotation = Quaternion.Euler(0, 0, baseAngle + (timer / maxTime) * angleDiff);
+                if(coolDownDir == 1) //fire left to right
+                    laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / maxTime) * angleDiff);
+                else //fire right to left
+                    laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle - (timer / maxTime) * angleDiff);
                 light.intensity = (maxTime - timer) / maxTime;
             }
         }
@@ -61,13 +68,26 @@ public class BossLaserBullet : MonoBehaviour
             if (timer >= coolDownTime)
             {
                 timer = 0;
-                ChargeLaser();
                 isCoolDown = false;
                 isCharging = true;
+                setDir = false;
             }
             else
             {
-                laserCannon.rotation = Quaternion.Euler(0, 0, maxAngle - (timer / coolDownTime) * angleDiff);
+                if (coolDownDir == 1)
+                    laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle - (timer / maxTime) * angleDiff);
+                else
+                    laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / maxTime) * angleDiff);
+                if (!setDir && (laserCannon.rotation.eulerAngles.z >= 89f && laserCannon.rotation.eulerAngles.z <= 91f))
+                {
+                    if (Random.Range(0.0f, 1.0f) > 0.5f)
+                    {
+                        coolDownDir = 1;
+                    }
+                    else
+                        coolDownDir = -1;
+                    setDir = true;
+                }
             }
         }
         if (isCharging)
@@ -103,7 +123,6 @@ public class BossLaserBullet : MonoBehaviour
         collider.enabled = true;
         sprite.enabled = true;
         isFiring = true;
-        laserCannon.rotation = Quaternion.Euler(0, 0, baseAngle);
     }
 
     void StopLaser()
@@ -111,10 +130,5 @@ public class BossLaserBullet : MonoBehaviour
         collider.enabled = false;
         sprite.enabled = false;
         isFiring = false;
-    }
-
-    void ChargeLaser()
-    {
-        //sprite.enabled = true;
     }
 }
