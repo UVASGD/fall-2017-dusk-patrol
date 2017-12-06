@@ -9,6 +9,7 @@ public class BossLaserBullet : MonoBehaviour
     public float maxTime;
     public float coolDownTime;
     public float chargeTime;
+    public int level;
 
     private Rigidbody2D rigidBody;
     private Collider2D collider;
@@ -24,6 +25,7 @@ public class BossLaserBullet : MonoBehaviour
     private float angleDiff;
     private float coolDownDir = 1; // 1 for coolDown right to left, -1 for coolDown left to right
     private bool setDir = false;
+    private GameObject player;
 
     private Transform laserCannon;
 
@@ -33,6 +35,7 @@ public class BossLaserBullet : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider2D>();
         light = transform.parent.GetComponent<Light>();
+        player = GameObject.Find("Player");
 
         angleDiff = rightAngle - leftAngle;
         targetAngle = leftAngle;
@@ -80,7 +83,7 @@ public class BossLaserBullet : MonoBehaviour
                     laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / maxTime) * angleDiff);
                 if (!setDir && (laserCannon.rotation.eulerAngles.z >= 89f && laserCannon.rotation.eulerAngles.z <= 91f))
                 {
-                    if (Random.Range(0.0f, 1.0f) > 0.5f)
+                    if (GetDirection())
                     {
                         coolDownDir = 1;
                     }
@@ -130,5 +133,30 @@ public class BossLaserBullet : MonoBehaviour
         collider.enabled = false;
         sprite.enabled = false;
         isFiring = false;
+    }
+
+    bool GetDirection()
+    {
+        if (level == 1)
+        {
+            return Random.Range(0.0f, 1.0f) > 0.5f;
+        }
+        else //level == 2
+        {
+            if (Random.Range(0.0f, 1.0f) > 0.7f) //move toward player
+            {
+                if (player.transform.position.x < 0) //if player on left side
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                if (player.transform.position.x < 0) //if player on left side
+                    return false;
+                else
+                    return true;
+            }
+        }
     }
 }

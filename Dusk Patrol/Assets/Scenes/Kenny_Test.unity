@@ -108,11 +108,52 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &106644022 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1440730311736722, guid: 2f4ede3004576c44f88edf5300c6bd57,
+    type: 2}
+  m_PrefabInternal: {fileID: 345924020}
 --- !u!4 &106644024 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4545719192484750, guid: 2f4ede3004576c44f88edf5300c6bd57,
     type: 2}
   m_PrefabInternal: {fileID: 345924020}
+--- !u!108 &106644025
+Light:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106644022}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 0
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Intensity: 0
+  m_Range: 1
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 1
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &272324368
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +678,11 @@ Prefab:
         type: 2}
       propertyPath: chargeTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114564009317729862, guid: d6cee84f2691ccb4996c2b8823a4ce81,
+        type: 2}
+      propertyPath: level
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6cee84f2691ccb4996c2b8823a4ce81, type: 2}
