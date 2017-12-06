@@ -53,6 +53,7 @@ public class HealthScript : MonoBehaviour
 
         if (currHealth <= 0)
         {
+
 			if (isPlayer) {
 				SceneManager.LoadScene ("Ded");
 			}

@@ -445,6 +445,11 @@ Prefab:
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 114870801856855296, guid: 71f37fb0fc3b81f4f9e08d23525e8766,
+        type: 2}
+      propertyPath: omaeWaMoShinderu
+      value: 
+      objectReference: {fileID: 8300000, guid: 2bd7a567c13e89348bc70e4ba57d67c8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71f37fb0fc3b81f4f9e08d23525e8766, type: 2}
   m_IsPrefabParent: 0
@@ -1359,6 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5aed70371c7bf24598b517287f1d9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dethScore: 0
   scoreText: {fileID: 571313558}
 --- !u!1001 &652282507
 Prefab:
