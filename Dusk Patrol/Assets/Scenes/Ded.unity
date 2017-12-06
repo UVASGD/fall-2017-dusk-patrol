@@ -664,7 +664,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -688,7 +688,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &1482294062
 Transform:
   m_ObjectHideFlags: 0
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   omaeWaMoShinderu: {fileID: 8300000, guid: 2bd7a567c13e89348bc70e4ba57d67c8, type: 3}
-  button: {fileID: 0}
+  button: {fileID: 2129203241}
 --- !u!1 &1792755597
 GameObject:
   m_ObjectHideFlags: 0
