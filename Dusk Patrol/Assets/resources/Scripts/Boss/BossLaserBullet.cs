@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class BossLaserBullet : MonoBehaviour
 {
-    public float damage;
-    public float speed;
-    public float maxTime;
-    public float coolDownTime;
-    public float chargeTime;
     public int level;
 
     private Rigidbody2D rigidBody;
@@ -16,6 +11,10 @@ public class BossLaserBullet : MonoBehaviour
     private SpriteRenderer sprite;
     private Light light;
     private float timer = 0f;
+    private float fireTime;
+    private float coolDownTime;
+    private float chargeTime;
+    private float damage;
     private bool isFiring = false;
     private bool isCoolDown = true;
     private bool isCharging = false;
@@ -43,6 +42,21 @@ public class BossLaserBullet : MonoBehaviour
         laserCannon = transform.parent;
 
         laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle);
+
+        if (level == 1)
+        {
+            fireTime = 3f;
+            coolDownTime = 5f;
+            chargeTime = 2f;
+            damage = 20f;
+        }
+        if (level == 2)
+        {
+            fireTime = 2;
+            coolDownTime = 3f;
+            chargeTime = 1f;
+            damage = 40f;
+        }
     }
 	
 	// Update is called once per frame
@@ -51,7 +65,7 @@ public class BossLaserBullet : MonoBehaviour
         timer += Time.deltaTime * TimeManager.timeFactor;
         if (isFiring)
         {
-            if (timer >= maxTime)
+            if (timer >= fireTime)
             {
                 StopLaser();
                 isCoolDown = true;
@@ -60,10 +74,10 @@ public class BossLaserBullet : MonoBehaviour
             else
             {
                 if(coolDownDir == 1) //fire left to right
-                    laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / maxTime) * angleDiff);
+                    laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / fireTime) * angleDiff);
                 else //fire right to left
-                    laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle - (timer / maxTime) * angleDiff);
-                light.intensity = (maxTime - timer) / maxTime;
+                    laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle - (timer / fireTime) * angleDiff);
+                light.intensity = (fireTime - timer) / fireTime;
             }
         }
         if (isCoolDown)
@@ -78,9 +92,9 @@ public class BossLaserBullet : MonoBehaviour
             else
             {
                 if (coolDownDir == 1)
-                    laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle - (timer / maxTime) * angleDiff);
+                    laserCannon.rotation = Quaternion.Euler(0, 0, rightAngle - (timer / coolDownTime) * angleDiff);
                 else
-                    laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / maxTime) * angleDiff);
+                    laserCannon.rotation = Quaternion.Euler(0, 0, leftAngle + (timer / coolDownTime) * angleDiff);
                 if (!setDir && (laserCannon.rotation.eulerAngles.z >= 89f && laserCannon.rotation.eulerAngles.z <= 91f))
                 {
                     if (GetDirection())
