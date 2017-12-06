@@ -4,7 +4,7 @@ using System.Collections;
 
 public class ScoreScript : MonoBehaviour {
 
-	int score;
+	float score;
 	public Text scoreText;
 
 	// Use this for initialization
@@ -15,7 +15,10 @@ public class ScoreScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		score++;
-		scoreText.text = score.ToString ();
+		score += (Time.deltaTime * TimeManager.timeFactor);
+		if (score < 0) {
+			score = 0;
+		}
+		scoreText.text = ((int) score).ToString();
 	}
 }
