@@ -11,12 +11,12 @@ public class HealthScript : MonoBehaviour
 
 	public AudioClip enemydeath;
 
-    private float currHealth;
-    private float timer = 0;
-    private float timeDead = 0f;
-    private Stack<HealthTime> healthStack;
+    protected float currHealth;
+    protected float timer = 0;
+    protected float timeDead = 0f;
+    protected Stack<HealthTime> healthStack;
 
-    void Awake()
+    protected void Awake()
     {
         healthStack = new Stack<HealthTime>();
         currHealth = maxHealth;
