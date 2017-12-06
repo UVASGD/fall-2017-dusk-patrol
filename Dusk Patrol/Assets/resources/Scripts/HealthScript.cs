@@ -53,7 +53,8 @@ public class HealthScript : MonoBehaviour
 
         if (currHealth <= 0)
         {
-
+            ScoreScript A = FindObjectOfType<ScoreScript>();
+            A.setScore(A.getScore()+50f);
 			if (isPlayer) {
 				SceneManager.LoadScene ("Ded");
 			}
