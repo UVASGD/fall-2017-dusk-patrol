@@ -7,6 +7,10 @@ public class EnemyBoss : EnemyMovement
 
 	public float targetY;
 
+	public AudioPlayer player;
+
+	public BossBar bossbar;
+
 
 	void Start() {
 
@@ -15,9 +19,13 @@ public class EnemyBoss : EnemyMovement
     // Update is called once per frame
     void Update()
     {
+		Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+		if (viewPos.y >= 0 && viewPos.y <= 1) {
+			player.goToBoss ();
+			bossbar.turnOn();
+		}
 		if (gameObject.transform.position.y < targetY) {
 			speed = 0;
-			FindObjectOfType<AudioPlayer> ().goToBoss ();
 		}
         t += Time.deltaTime * TimeManager.timeFactor;
         movement = this.getMovement(t).normalized;

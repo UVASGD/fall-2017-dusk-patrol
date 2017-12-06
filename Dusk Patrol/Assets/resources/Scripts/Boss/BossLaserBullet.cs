@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossLaserBullet : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class BossLaserBullet : MonoBehaviour
     private GameObject player;
 
     private Transform laserCannon;
+
+	private bool freakout;
+	private float freakAmount;
 
     void Awake()
     {
@@ -63,6 +67,24 @@ public class BossLaserBullet : MonoBehaviour
 	void Update ()
     {
         timer += Time.deltaTime * TimeManager.timeFactor;
+
+		if (freakout) {
+			freakAmount += Time.deltaTime * TimeManager.timeFactor;
+			light.intensity = freakAmount;
+			if (freakAmount > 1) {
+				light.range = light.range + Time.deltaTime * TimeManager.timeFactor;
+			}
+			if (freakAmount > 3) {
+				SceneManager.LoadScene ("END");
+			}
+			return;
+		}
+
+		Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+		if (viewPos.y < 0 || viewPos.y > 1) {
+			return;
+		}
+
         if (isFiring)
         {
             if (timer >= fireTime)
@@ -173,4 +195,11 @@ public class BossLaserBullet : MonoBehaviour
             }
         }
     }
+
+	public void freakTheFuckOut() {
+		if (!freakout) {
+			freakout = true;
+			freakAmount = 0;
+		}
+	}
 }

@@ -23,7 +23,9 @@ public class BossHealth : HealthScript
         if (currHealth <= 0)
         {
             isDead = true;
-            Destroy(gameObject);
+            //Destroy(gameObject);
+			FindObjectOfType<BossLaserBullet>().freakTheFuckOut();
+			FindObjectOfType<BossShooting> ().enabled = false;
             AudioSource.PlayClipAtPoint(enemydeath, gameObject.transform.position, OptionScript.loadSettings().SFX);
             timeDead = timer;
         }
