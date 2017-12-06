@@ -15,7 +15,6 @@ public class EnemyBoss : EnemyMovement
     // Update is called once per frame
     void Update()
     {
-		Debug.Log (gameObject.transform.position.y);
 		if (gameObject.transform.position.y < targetY) {
 			speed = 0;
 			FindObjectOfType<AudioPlayer> ().goToBoss ();

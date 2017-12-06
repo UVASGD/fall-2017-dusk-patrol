@@ -32,6 +32,8 @@ public class BossLaserShooting : MonoBehaviour {
                 Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
                 if (viewPos.y >= 0 && viewPos.y <= 1)
                 {
+					Debug.Log (viewPos);
+					Debug.Log (gameObject.transform.position);
                     timer += Time.deltaTime * TimeManager.timeFactor;
                     if (timer % 5f <=2)
                     {
