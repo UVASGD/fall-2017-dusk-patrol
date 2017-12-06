@@ -19,6 +19,6 @@ public class DedScript : MonoBehaviour {
 	}
 
 	void OnClick() {
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene ("Main Menu");
 	}
 }
