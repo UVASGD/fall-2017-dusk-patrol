@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
     void OnClickStart()
     {
 		buttonClicker.Play ();
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Actual Level 1");
     }
 	void OnClickOption()
 	{

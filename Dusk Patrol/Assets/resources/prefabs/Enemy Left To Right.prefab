@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50256045077065530}
   - component: {fileID: 114559031418055158}
   - component: {fileID: 114134249640171460}
-  - component: {fileID: 114240753769347582}
+  - component: {fileID: 114645770340445230}
   m_Layer: 0
   m_Name: Enemy Left To Right
   m_TagString: Enemy
@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1791065105010332}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -1.37, y: 2.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!50 &50256045077065530
 Rigidbody2D:
   serializedVersion: 4
@@ -116,21 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBullet: {fileID: 1882855640363068, guid: 8c18e6c85c4dd234c8a00cf4971d5bc4,
     type: 2}
---- !u!114 &114240753769347582
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1791065105010332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ab4a77c027b364ea7ae4e762ce7498, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 100
-  colDamage: 10
-  tm: {fileID: 0}
-  size: 5
 --- !u!114 &114559031418055158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +131,21 @@ MonoBehaviour:
   isDead: 0
   isPlayer: 0
   enemydeath: {fileID: 8300000, guid: 823a72b03a816b9429038260f254264c, type: 3}
+--- !u!114 &114645770340445230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1791065105010332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d7e7cfd7d5abc4dacef3a0d12f3191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  colDamage: 0
+  tm: {fileID: 0}
+  direction: 5
 --- !u!212 &212008320629291628
 SpriteRenderer:
   m_ObjectHideFlags: 1
