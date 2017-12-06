@@ -24,4 +24,13 @@ public class ScoreScript : MonoBehaviour {
 		}
 		scoreText.text = ((int) score).ToString();
 	}
+
+    public void setScore(float p)
+    {
+        score = p;
+    }
+    public float getScore()
+    {
+        return score;
+    }
 }

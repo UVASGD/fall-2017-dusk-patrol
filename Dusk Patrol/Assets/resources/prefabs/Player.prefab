@@ -209,7 +209,7 @@ MonoBehaviour:
     type: 2}
   tm: {fileID: 0}
   shootystuff: {fileID: 82002287781309162}
-  speed: 7
+  speed: 10
 --- !u!114 &114870801856855296
 MonoBehaviour:
   m_ObjectHideFlags: 1

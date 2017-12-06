@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -0.5
-  tileSizeY: 8
+  tileSizeY: 10
   timeScript: {fileID: 0}
 --- !u!95 &179229205
 Animator:
@@ -390,7 +390,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 179229203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18, y: -9.92, z: 950}
+  m_LocalPosition: {x: 0, y: -5, z: 950}
   m_LocalScale: {x: 23.978132, y: 10.031799, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -445,6 +445,11 @@ Prefab:
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 114870801856855296, guid: 71f37fb0fc3b81f4f9e08d23525e8766,
+        type: 2}
+      propertyPath: omaeWaMoShinderu
+      value: 
+      objectReference: {fileID: 8300000, guid: 2bd7a567c13e89348bc70e4ba57d67c8, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71f37fb0fc3b81f4f9e08d23525e8766, type: 2}
   m_IsPrefabParent: 0
@@ -1359,6 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5aed70371c7bf24598b517287f1d9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dethScore: 0
   scoreText: {fileID: 571313558}
 --- !u!1001 &652282507
 Prefab:
@@ -2229,7 +2235,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1011692125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.034, y: 0.068, z: 950}
+  m_LocalPosition: {x: 0, y: 5, z: 950}
   m_LocalScale: {x: 23.978132, y: 10.031799, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2247,7 +2253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: -0.5
-  tileSizeY: 8
+  tileSizeY: 10
   timeScript: {fileID: 0}
 --- !u!1001 &1031547223
 Prefab:
