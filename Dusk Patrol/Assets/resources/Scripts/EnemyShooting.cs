@@ -6,15 +6,15 @@ public class EnemyShooting : MonoBehaviour
 {
     public GameObject enemyBullet;
 
-    private HealthScript health;
-    private float maxCoolDown = 0.3f;
-    private float currCoolDown = 0f;
-    private float[] shootTimes;
+    protected HealthScript health;
+    protected float maxCoolDown = 0.3f;
+    protected float currCoolDown = 0f;
+    protected float[] shootTimes;
 
-    private float timer = 0f;
-    private int shootTimesIndex = 0;
+    protected float timer = 0f;
+    protected int shootTimesIndex = 0;
 
-    void Awake()
+    protected void Awake()
     {
         /*Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
         if (viewPos.x > 1 || viewPos.x<0)

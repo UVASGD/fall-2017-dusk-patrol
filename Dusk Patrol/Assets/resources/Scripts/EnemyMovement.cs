@@ -6,9 +6,9 @@ public class EnemyMovement : MonoBehaviour {
 
     public float speed;
 	public  float colDamage;
-    private Rigidbody2D myRigidBody;
-    private Vector2 movement;
-    private float t;
+    protected Rigidbody2D myRigidBody;
+    protected Vector2 movement;
+    protected float t;
 
 	public TimeManager tm;
 

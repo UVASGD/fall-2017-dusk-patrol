@@ -8,12 +8,12 @@ public class BasicBullet : MonoBehaviour
 	public AudioClip clip;
     public float damage;
     public float speed;
-    private Rigidbody2D rigidBody;
-    private float isEnemyBullet = -1; //default as enemy bullet
-    private float timer = 0f;
-    private float despawnedTime = 0f;
-    private bool isDespawn = false;
-    private bool respawned = false;
+    protected Rigidbody2D rigidBody;
+    protected float isEnemyBullet = -1; //default as enemy bullet
+    protected float timer = 0f;
+    protected float despawnedTime = 0f;
+    protected bool isDespawn = false;
+    protected bool respawned = false;
 
 	void Awake ()
     {
@@ -31,7 +31,6 @@ public class BasicBullet : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = true;
             GetComponent<Collider2D>().enabled = true;
             isDespawn = false;
-			Debug.Log ("Respawn");
         }
 
 		if (!isDespawn)
@@ -66,7 +65,10 @@ public class BasicBullet : MonoBehaviour
         {
             if (isEnemyBullet == -1 && col.tag.Equals("Player") || isEnemyBullet == 1 && col.tag.Equals("Enemy"))
             {
-                col.gameObject.GetComponent<HealthScript>().TakeDamage(damage);
+                if (col.gameObject.GetComponent<BossHealth>())
+                    col.gameObject.GetComponent<BossHealth>().TakeDamage(damage);
+                else
+                    col.gameObject.GetComponent<HealthScript>().TakeDamage(damage);
                 despawnedTime = timer;
                 isDespawn = true;
                 GetComponent<SpriteRenderer>().enabled = false;
