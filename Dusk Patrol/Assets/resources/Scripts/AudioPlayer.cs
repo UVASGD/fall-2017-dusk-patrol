@@ -6,18 +6,30 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioPlayer : MonoBehaviour {
 
-	private AudioSource a;
+	public AudioSource mainMusic;
+	public AudioSource bossMusic;
 
 	// Use this for initialization
 	void Start () {
-		a = GetComponent<AudioSource> ();
-		a.volume = OptionScript.loadSettings ().BGM;
-		a.loop = true;
-		a.Play ();
+		bossMusic.loop = true;
+		bossMusic.volume = OptionScript.loadSettings ().BGM;
+		mainMusic.volume = OptionScript.loadSettings ().BGM;
+		mainMusic.loop = true;
+		mainMusic.Play ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void goToBoss() {
+		mainMusic.Stop ();
+		bossMusic.Play ();
+	}
+
+	public void goToMain() {
+		bossMusic.Stop ();
+		mainMusic.Play ();
 	}
 }

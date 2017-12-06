@@ -217,7 +217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -202}
+  m_AnchoredPosition: {x: 0.000015259, y: -247.33}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439063015
@@ -410,8 +410,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.95, y: 10.125}
-  m_SizeDelta: {x: 377.3, y: 359.75}
+  m_AnchoredPosition: {x: -4.95, y: -21.17}
+  m_SizeDelta: {x: 377.3, y: 422.33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1006144328
 MonoBehaviour:
@@ -484,6 +484,13 @@ MonoBehaviour:
     Music:
 
     Joshua Santos
+
+
+    Inspiration:
+
+    Jojo''s Bizarre Adventure
+
+    Fist of the North Star
 
 '
 --- !u!222 &1006144329

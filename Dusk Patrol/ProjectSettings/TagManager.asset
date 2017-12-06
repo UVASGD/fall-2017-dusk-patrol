@@ -45,3 +45,6 @@ TagManager:
   - name: Boss Guns
     uniqueID: 2611698637
     locked: 0
+  - name: Laser
+    uniqueID: 4252467069
+    locked: 0
