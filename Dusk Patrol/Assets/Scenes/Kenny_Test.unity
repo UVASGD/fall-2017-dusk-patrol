@@ -108,30 +108,11 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &106644022 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1440730311736722, guid: 2f4ede3004576c44f88edf5300c6bd57,
-    type: 2}
-  m_PrefabInternal: {fileID: 345924020}
 --- !u!4 &106644024 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4545719192484750, guid: 2f4ede3004576c44f88edf5300c6bd57,
     type: 2}
   m_PrefabInternal: {fileID: 345924020}
---- !u!114 &106644025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 106644022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 374eb98ac3efc714d8ce70148c663d85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyBullet: {fileID: 1248414041154374, guid: d6cee84f2691ccb4996c2b8823a4ce81,
-    type: 2}
-  isBulletGun: 0
 --- !u!1 &272324368
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +347,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBullet: {fileID: 1882855640363068, guid: 8c18e6c85c4dd234c8a00cf4971d5bc4,
     type: 2}
-  isBulletGun: 1
 --- !u!61 &986505304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -438,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9458ce4bc4225d46996d727ef7ba073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 2000
   isDead: 0
   isPlayer: 0
   enemydeath: {fileID: 8300000, guid: 823a72b03a816b9429038260f254264c, type: 3}
@@ -615,11 +595,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4472296147978380, guid: d6cee84f2691ccb4996c2b8823a4ce81, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.3420201
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4472296147978380, guid: d6cee84f2691ccb4996c2b8823a4ce81, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.9396927
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4472296147978380, guid: d6cee84f2691ccb4996c2b8823a4ce81, type: 2}
       propertyPath: m_RootOrder
@@ -631,12 +611,32 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4472296147978380, guid: d6cee84f2691ccb4996c2b8823a4ce81, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212079827509185970, guid: d6cee84f2691ccb4996c2b8823a4ce81,
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114564009317729862, guid: d6cee84f2691ccb4996c2b8823a4ce81,
+        type: 2}
+      propertyPath: maxTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114564009317729862, guid: d6cee84f2691ccb4996c2b8823a4ce81,
+        type: 2}
+      propertyPath: coolDownTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114564009317729862, guid: d6cee84f2691ccb4996c2b8823a4ce81,
+        type: 2}
+      propertyPath: damage
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114564009317729862, guid: d6cee84f2691ccb4996c2b8823a4ce81,
+        type: 2}
+      propertyPath: chargeTime
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6cee84f2691ccb4996c2b8823a4ce81, type: 2}
@@ -760,7 +760,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBullet: {fileID: 1882855640363068, guid: 8c18e6c85c4dd234c8a00cf4971d5bc4,
     type: 2}
-  isBulletGun: 1
 --- !u!61 &1753509371
 BoxCollider2D:
   m_ObjectHideFlags: 0

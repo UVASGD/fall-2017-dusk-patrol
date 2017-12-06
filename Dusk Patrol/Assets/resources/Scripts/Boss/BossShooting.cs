@@ -4,70 +4,48 @@ using UnityEngine;
 
 public class BossShooting : EnemyShooting
 {
-    public bool isBulletGun;
-
-    private BossLaserBullet laser;
-
-    private float laserCoolDown = 10f;
-
     void Awake()
     {
-        base.Awake();
         health = gameObject.transform.parent.GetComponent<HealthScript>();
-        if (!isBulletGun)
-            laser = transform.Find("Laser").GetComponent<BossLaserBullet>();
+
+        shootTimes = new float[10];
+        for (int i = 0; i < shootTimes.Length; i++)
+        {
+            shootTimes[i] = Random.Range(100f, 500f) / 100f;
+        }
     }
 
     void Update()
     {
         if (!health.isDead)
         {
-            if (isBulletGun)
+            if (TimeManager.timeFactor > 0)
             {
-                if (TimeManager.timeFactor > 0)
+                Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+                if (viewPos.y >= 0 && viewPos.y <= 1)
                 {
-                    Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
-                    if (viewPos.y >= 0 && viewPos.y <= 1)
+                    timer += Time.deltaTime * TimeManager.timeFactor;
+                    if (timer >= shootTimes[shootTimesIndex])
                     {
-                        timer += Time.deltaTime * TimeManager.timeFactor;
-                        if (timer >= shootTimes[shootTimesIndex])
-                        {
-                            ShootBullet(enemyBullet);
-                            shootTimesIndex++;
-                            if (shootTimesIndex <= shootTimes.Length)
-                                shootTimesIndex = 0;
-                            timer = 0;
-                        }
-                    }
-                }
-                else if (TimeManager.timeFactor <= 0)
-                {
-                    Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
-                    if (viewPos.y >= 0 && viewPos.y <= 1)
-                    {
-                        timer -= Time.deltaTime * TimeManager.timeFactor;
-                        if (timer < 0f)
-                        {
-                            if (shootTimesIndex > 0)
-                                shootTimesIndex--;
-                            timer = shootTimes[shootTimesIndex];
-                        }
+                        ShootBullet(enemyBullet);
+                        shootTimesIndex++;
+                        if (shootTimesIndex <= shootTimes.Length)
+                            shootTimesIndex = 0;
+                        timer = 0;
                     }
                 }
             }
-            else
+            else if (TimeManager.timeFactor <= 0)
             {
-                if (TimeManager.timeFactor > 0)
+                Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
+                if (viewPos.y >= 0 && viewPos.y <= 1)
                 {
-                    Vector3 viewPos = Camera.main.WorldToViewportPoint(gameObject.transform.position);
-                    if (viewPos.y >= 0 && viewPos.y <= 1)
+                    timer -= Time.deltaTime * TimeManager.timeFactor;
+                    if (timer < 0f)
                     {
-                        timer += Time.deltaTime * TimeManager.timeFactor;
-                        if (timer >= laserCoolDown)
-                        {
-                            laser.ShootLaser();
-                            timer = 0;
-                        }
+                        if (shootTimesIndex > 0)
+                            shootTimesIndex--;
+                        timer = shootTimes[shootTimesIndex];
                     }
                 }
             }
